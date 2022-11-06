@@ -12,5 +12,13 @@
 
     <dimen name="page_px">28dp</dimen>
 
+    <dimen name="motivation_txt_bm">140dp</dimen>
+    <dimen name="motivation_txt_size">17sp</dimen>
+    <dimen name="motivation_emoji_size">48sp</dimen>
+    <dimen name="motivation_emoji_mb">83dp</dimen>
+
     <dimen name="btn_border_radius">8dp</dimen>
+
+    <dimen name="primary_btn_width">120dp</dimen>
+    <dimen name="primary_btn_txt_size">@dimen/input_font_size</dimen>
 </resources>
