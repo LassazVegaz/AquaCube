@@ -1,14 +1,16 @@
-package com.example.icecube;
+package com.example.icecube.activites.goals;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class CreateGoalActivity extends AppCompatActivity {
+import com.example.icecube.R;
+
+public class GoalsListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_goal);
+        setContentView(R.layout.activity_goals_list);
     }
 }
