@@ -8,4 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00FFFFFF</color>
+    <color name="page_bg">#92DEF4</color>
+    <color name="blue_2">#1B4DFF</color>
+    <color name="blue_1">0029FF</color>
 </resources>

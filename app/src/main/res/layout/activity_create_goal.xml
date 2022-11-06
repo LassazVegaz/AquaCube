@@ -4,6 +4,111 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activites.goals.CreateGoalActivity">
+    tools:context=".activites.goals.CreateGoalActivity"
+    android:background="@color/page_bg">
+
+    <ImageView
+        android:id="@+id/cg_act__backIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/header_back_ml"
+        android:layout_marginTop="@dimen/header_back_mt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/top_back_button"
+        tools:layout_height="wrap_content"
+        tools:layout_width="wrap_content" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName"
+        android:layout_width="277dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/header_text_ml"
+        android:layout_marginTop="@dimen/header_text_mt"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Goal Name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="@dimen/header_font_size"
+        android:fontFamily="@font/poppins_bold"
+        android:paddingVertical="1dp"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+        android:paddingHorizontal="@dimen/page_px"
+        android:paddingBottom="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:fontFamily="@font/inter_semibold"
+            android:text="Select the amount of water per day in liters"
+            android:textColor="@color/black"
+            android:textSize="@dimen/label_font_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_goneMarginTop="113dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="83dp"
+            android:fontFamily="@font/inter"
+            android:minHeight="48dp"
+            android:text="4"
+            android:textColor="@color/black"
+            android:textSize="@dimen/input_font_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="160dp"
+            android:fontFamily="@font/inter_semibold"
+            android:text="Select a potion size"
+            android:textColor="@color/black"
+            android:textSize="@dimen/label_font_size"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_goneMarginTop="113dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="199dp"
+            android:fontFamily="@font/inter"
+            android:minHeight="48dp"
+            android:text="250ml Cup"
+            android:textColor="@color/black"
+            android:textSize="@dimen/input_font_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="260dp"
+            android:background="@drawable/secondary_btn_2_bg"
+            android:text="Add a Custom Potion"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="@dimen/label_font_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:paddingVertical="2dp"
+            android:paddingHorizontal="28dp"
+            android:minHeight="0dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
