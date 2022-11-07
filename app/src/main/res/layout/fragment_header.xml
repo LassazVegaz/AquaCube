@@ -11,22 +11,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/header_Text"
+        app:layout_constraintEnd_toStartOf="@+id/header_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/top_back_button"
         tools:layout_height="wrap_content"
-        tools:layout_width="wrap_content" />
+        tools:layout_width="wrap_content"
+        android:contentDescription="@string/all_img_desc" />
 
     <TextView
-        android:id="@+id/header_Text"
+        android:id="@+id/header_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:fontFamily="@font/poppins_bold"
-        android:text="Your Goals"
-        android:textFontWeight="@integer/material_motion_duration_long_1"
-        android:textSize="29dp"
+        android:text="@string/header_frag_def_text"
+        android:textSize="29sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

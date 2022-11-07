@@ -11,4 +11,7 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="header_frag_def_text">Header Text</string>
+    <string name="all_img_desc">dummy desc bc Android is stupid</string>
+    <string name="goals_list_header_text">Your Goals</string>
 </resources>
