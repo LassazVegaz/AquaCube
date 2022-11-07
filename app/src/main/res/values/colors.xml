@@ -9,7 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="page_bg">#92DEF4</color>
-    <color name="blue_1">#0029FF</color>
+    <color name="blue_1">#CF0029FF</color>
     <color name="blue_2">#1B4DFF</color>
+    <color name="red">#CFFF001F</color>
     <color name="day_selector_unselected">#601BAAFF</color>
 </resources>

@@ -28,4 +28,5 @@
     <dimen name="label_input_gap">15dp</dimen>
     <dimen name="section_gap">45dp</dimen>
     <dimen name="page_pb">20dp</dimen>
+    <dimen name="linear_input_label_width">140dp</dimen>
 </resources>
