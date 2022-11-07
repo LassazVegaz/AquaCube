@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/page_bg"
-    tools:context=".activites.goals.CreateReminderActivity">
+    tools:context=".activities.goals.CreateReminderActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView5"

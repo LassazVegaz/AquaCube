@@ -1,4 +1,4 @@
-package com.example.icecube.activites.goals;
+package com.example.icecube.activities.goals;
 
 import androidx.appcompat.app.AppCompatActivity;
 

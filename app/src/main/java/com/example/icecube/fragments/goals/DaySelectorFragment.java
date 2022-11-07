@@ -1,4 +1,4 @@
-package com.example.icecube.fragments;
+package com.example.icecube.fragments.goals;
 
 import android.os.Bundle;
 

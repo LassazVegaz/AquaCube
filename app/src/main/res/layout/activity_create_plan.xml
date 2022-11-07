@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/page_bg"
-    tools:context=".activites.goals.CreatePlanActivity">
+    tools:context=".activities.goals.CreatePlanActivity">
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/create_plan_header"
@@ -43,7 +43,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragmentContainerView4"
-            android:name="com.example.icecube.fragments.DaySelectorFragment"
+            android:name="com.example.icecube.fragments.goals.DaySelectorFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/label_input_gap"
@@ -66,7 +66,7 @@
             app:layout_constraintTop_toBottomOf="@+id/fragmentContainerView4" />
 
         <androidx.fragment.app.FragmentContainerView
-            android:name="com.example.icecube.fragments.RemindersListItemFragment"
+            android:name="com.example.icecube.fragments.goals.RemindersListItemFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/label_input_gap"
