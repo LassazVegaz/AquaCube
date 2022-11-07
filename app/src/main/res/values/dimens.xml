@@ -17,8 +17,15 @@
     <dimen name="motivation_emoji_size">48sp</dimen>
     <dimen name="motivation_emoji_mb">83dp</dimen>
 
-    <dimen name="btn_border_radius">8dp</dimen>
-
-    <dimen name="primary_btn_width">120dp</dimen>
+    <dimen name="primary_btn_width">135dp</dimen>
     <dimen name="primary_btn_txt_size">@dimen/input_font_size</dimen>
+    <dimen name="page_first_item_mt">45dp</dimen>
+
+
+    <dimen name="bradius_1">8dp</dimen>
+    <dimen name="bradius_2">9dp</dimen>
+    <dimen name="btn_border_radius">@dimen/bradius_1</dimen>
+    <dimen name="label_input_gap">15dp</dimen>
+    <dimen name="section_gap">45dp</dimen>
+    <dimen name="page_pb">20dp</dimen>
 </resources>

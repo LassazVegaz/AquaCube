@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:paddingHorizontal="@dimen/page_px"
-        android:paddingBottom="20dp"
+        android:paddingBottom="@dimen/page_pb"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +47,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
+            android:layout_marginTop="@dimen/page_first_item_mt"
             android:fontFamily="@font/inter_semibold"
             android:text="Select the amount of water per day in liters"
             android:textColor="@color/black"

@@ -14,19 +14,7 @@
         android:theme="@style/Theme.IceCube"
         tools:targetApi="31">
         <activity
-            android:name=".PlansListActivity"
-            android:exported="false" />
-        <activity
             android:name=".activites.goals.CreateGoalActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".activites.goals.GoalsListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
