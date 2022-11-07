@@ -96,24 +96,20 @@
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/button"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/goals_list_add_btn"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginEnd="7dp"
             android:layout_marginBottom="7dp"
             android:background="@drawable/add_button_background"
-            android:backgroundTint="@color/transparent"
             android:shadowColor="#1D0AF9"
             android:shadowDx="0"
             android:shadowDy="0"
             android:shadowRadius="8"
             android:text="+"
             android:textColor="#1D0AF9"
-            android:textColorHighlight="@color/transparent"
-            android:textColorHint="@color/transparent"
-            android:textColorLink="@color/transparent"
-            android:textSize="30dp"
+            android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
