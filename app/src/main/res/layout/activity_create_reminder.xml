@@ -38,12 +38,12 @@
             android:text="Pick a time"
             android:textColor="@color/black"
             android:textSize="@dimen/label_font_size"
-            app:layout_constraintBottom_toBottomOf="@+id/editText"
+            app:layout_constraintBottom_toBottomOf="@+id/create_goal_water_amount_txt"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/editText" />
+            app:layout_constraintTop_toTopOf="@+id/create_goal_water_amount_txt" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/create_goal_water_amount_txt"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/page_first_item_mt"
@@ -83,7 +83,7 @@
             android:textSize="@dimen/input_font_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView10"
-            app:layout_constraintTop_toBottomOf="@+id/editText" />
+            app:layout_constraintTop_toBottomOf="@+id/create_goal_water_amount_txt" />
 
         <TextView
             android:id="@+id/textView12"

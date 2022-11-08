@@ -20,7 +20,7 @@
         tools:layout_width="wrap_content" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/create_goal_goal_name_txt"
         android:layout_width="277dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/header_text_ml"
@@ -43,7 +43,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+        app:layout_constraintTop_toBottomOf="@+id/create_goal_goal_name_txt"
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
@@ -60,7 +60,7 @@
             app:layout_goneMarginTop="@dimen/page_first_item_mt" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/create_goal_water_amount_txt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/label_input_gap"
@@ -83,7 +83,7 @@
             android:textColor="@color/black"
             android:textSize="@dimen/label_font_size"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText"
+            app:layout_constraintTop_toBottomOf="@+id/create_goal_water_amount_txt"
             app:layout_goneMarginTop="113dp" />
 
         <androidx.appcompat.widget.AppCompatButton

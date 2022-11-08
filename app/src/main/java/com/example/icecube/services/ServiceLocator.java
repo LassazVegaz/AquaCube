@@ -5,7 +5,7 @@ import com.example.icecube.services.goals.GoalsService;
 public class ServiceLocator {
     static ServiceLocator instance;
 
-    static ServiceLocator getInstance() {
+    public static ServiceLocator getInstance() {
         if (instance == null) {
             synchronized (ServiceLocator.class) {
                 if (instance == null) {
@@ -25,7 +25,11 @@ public class ServiceLocator {
         goalsService = new GoalsService(authService);
     }
 
-    AuthService getAuthService() {
+    public AuthService getAuthService() {
         return authService;
+    }
+
+    public GoalsService getGoalsService() {
+        return goalsService;
     }
 }
