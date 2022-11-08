@@ -1,6 +1,6 @@
-package com.example.icecube.DTOs.in;
+package com.example.icecube.DTOs.out;
 
-public class GoalIn {
+public class GoalOut {
     public String name;
     public int waterAmount;
     public int potionSize;

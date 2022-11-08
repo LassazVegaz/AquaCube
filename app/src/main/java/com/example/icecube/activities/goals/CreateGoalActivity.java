@@ -11,19 +11,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.icecube.DTOs.in.GoalIn;
+import com.example.icecube.DTOs.out.GoalOut;
 import com.example.icecube.R;
 import com.example.icecube.services.ServiceLocator;
 import com.example.icecube.services.goals.GoalsService;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.function.Function;
-import java.util.function.IntFunction;
-import java.util.function.IntUnaryOperator;
-import java.util.stream.Stream;
 
 public class CreateGoalActivity extends AppCompatActivity {
     int selectedPotionIndex = 0;
@@ -61,7 +54,7 @@ public class CreateGoalActivity extends AppCompatActivity {
     }
 
     void onViewPlansButtonClicked(View v) {
-        GoalIn goal = buildGoal();
+        GoalOut goal = buildGoal();
         gs.createGoal(goal, task -> {
             Intent i = new Intent(this, PlansListActivity.class);
             startActivity(i);
@@ -84,14 +77,14 @@ public class CreateGoalActivity extends AppCompatActivity {
     }
 
     void onSaveButtonClick(View v) {
-        GoalIn goal = buildGoal();
+        GoalOut goal = buildGoal();
         gs.createGoal(goal, task -> Log.d("goals", "Goal was created"));
     }
 
     // utils
     @NonNull
-    private GoalIn buildGoal() {
-        GoalIn goal = new GoalIn();
+    private GoalOut buildGoal() {
+        GoalOut goal = new GoalOut();
         goal.name = ((EditText) findViewById(R.id.create_goal_goal_name_txt)).getText().toString();
         goal.waterAmount = Integer.parseInt(((EditText) findViewById(R.id.create_goal_water_amount_txt)).getText().toString());
         goal.potionSize = potionSizes[selectedPotionIndex];
