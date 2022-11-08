@@ -9,16 +9,22 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.icecube.R;
+import com.example.icecube.services.ServiceLocator;
+import com.example.icecube.services.goals.GoalsService;
 
 public class GoalsListActivity extends AppCompatActivity {
+    final GoalsService gs = ServiceLocator.getInstance().getGoalsService();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goals_list);
 
-        Button addBtn = (Button) findViewById(R.id.goals_list_add_btn);
+        Button addBtn = findViewById(R.id.goals_list_add_btn);
         addBtn.setOnClickListener((v) -> onAddButtonClick());
+
+        gs.getGoals(goals -> {
+        });
     }
 
     private void onAddButtonClick() {

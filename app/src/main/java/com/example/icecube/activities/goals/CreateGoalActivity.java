@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.icecube.DTOs.out.GoalOut;
+import com.example.icecube.models.Goal;
 import com.example.icecube.R;
 import com.example.icecube.services.ServiceLocator;
 import com.example.icecube.services.goals.GoalsService;
@@ -54,7 +54,7 @@ public class CreateGoalActivity extends AppCompatActivity {
     }
 
     void onViewPlansButtonClicked(View v) {
-        GoalOut goal = buildGoal();
+        Goal goal = buildGoal();
         gs.createGoal(goal, task -> {
             Intent i = new Intent(this, PlansListActivity.class);
             startActivity(i);
@@ -77,14 +77,14 @@ public class CreateGoalActivity extends AppCompatActivity {
     }
 
     void onSaveButtonClick(View v) {
-        GoalOut goal = buildGoal();
+        Goal goal = buildGoal();
         gs.createGoal(goal, task -> Log.d("goals", "Goal was created"));
     }
 
     // utils
     @NonNull
-    private GoalOut buildGoal() {
-        GoalOut goal = new GoalOut();
+    private Goal buildGoal() {
+        Goal goal = new Goal();
         goal.name = ((EditText) findViewById(R.id.create_goal_goal_name_txt)).getText().toString();
         goal.waterAmount = Integer.parseInt(((EditText) findViewById(R.id.create_goal_water_amount_txt)).getText().toString());
         goal.potionSize = potionSizes[selectedPotionIndex];
