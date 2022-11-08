@@ -86,19 +86,20 @@
             app:layout_constraintTop_toBottomOf="@+id/editText"
             app:layout_goneMarginTop="113dp" />
 
-        <EditText
-            android:id="@+id/editText2"
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/create_goal_portion_size_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/label_input_gap"
             android:fontFamily="@font/inter"
-            android:minHeight="48dp"
             android:text="250ml Cup"
             android:textColor="@color/black"
             android:textSize="@dimen/input_font_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+            app:layout_constraintTop_toBottomOf="@+id/textView8"
+            android:background="@drawable/secondary_btn_2_bg"
+            android:textAllCaps="false"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -112,7 +113,7 @@
             android:textSize="@dimen/label_font_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText2"
+            app:layout_constraintTop_toBottomOf="@+id/create_goal_portion_size_btn"
             android:layout_marginTop="@dimen/label_input_gap"/>
 
         <TextView
@@ -145,7 +146,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="@dimen/primary_btn_width"
             android:layout_height="wrap_content"
             android:background="@drawable/primary_btn_bg"
@@ -153,10 +154,12 @@
             android:text="Save"
             android:textAllCaps="false"
             android:textSize="@dimen/primary_btn_txt_size"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/create_goal_view_plans_btn"
             android:layout_width="@dimen/primary_btn_width"
             android:layout_height="wrap_content"
             android:background="@drawable/primary_btn_bg"
@@ -164,6 +167,7 @@
             android:text="View Plans"
             android:textAllCaps="false"
             android:textSize="@dimen/primary_btn_txt_size"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
