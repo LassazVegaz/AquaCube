@@ -3,7 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.icecube">
 
+    
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
+        
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -18,15 +21,12 @@
             android:name=".RelavantPartiesActivity"
             android:exported="false"
             android:label="Unique Relavant parties"
-            android:parentActivityName=".RelavantPartiesMain"/>
-
-
+            android:parentActivityName=".RelavantPartiesMain" />
         <activity
             android:name=".RelavantPartiesMain"
             android:exported="false"
             android:label="Relavant parties"
-            android:parentActivityName=".ViewComplaintsActivity"/>
-
+            android:parentActivityName=".ViewComplaintsActivity" />
         <activity
             android:name=".ViewComplaintsActivity"
             android:exported="false"
