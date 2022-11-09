@@ -4,9 +4,12 @@ import com.example.icecube.models.Goal;
 import com.example.icecube.services.AuthService;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +38,10 @@ public class GoalsService {
                     }
                     onSuccessListener.onSuccess(goals);
                 });
+    }
+
+    public Query getGoalsQuery() {
+        return fs.collection(getGoalsPath());
     }
 
     String getGoalsPath() {
