@@ -15,7 +15,9 @@ import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.function.Function;
 
 public class GoalsService {
     final AuthService authService;
@@ -25,13 +27,27 @@ public class GoalsService {
         this.authService = authService;
     }
 
-    public void createGoal(Goal goal, OnCompleteListener<Void> onCompleteListener) {
+
+    public void createGoal(Goal goal, OnSuccessListener<Goal> onSuccessListener) {
         fs.collection(getGoalsPath())
                 .add(goal)
                 .addOnSuccessListener(reference ->
                         reference.update("uid", reference.getId())
-                                .addOnSuccessListener(unused ->
-                                        onCompleteListener.onComplete(Tasks.forResult(null))));
+                                .addOnSuccessListener(unused -> {
+                                    goal.id = reference.getId();
+                                    onSuccessListener.onSuccess(goal);
+                                }));
+    }
+
+    public void updateGoal(String id, Goal goal, OnSuccessListener<Goal> onSuccessListener) {
+        fs.collection(getGoalsPath())
+                .document(id)
+                .update(new HashMap<String, Object>() {{
+                    put("name", goal.name);
+                    put("waterAmount", goal.waterAmount);
+                    put("potionSize", goal.potionSize);
+                }})
+                .addOnSuccessListener(unused -> onSuccessListener.onSuccess(goal));
     }
 
     public Query getGoalsQuery() {

@@ -31,6 +31,7 @@ public class CreateGoalActivity extends AppCompatActivity {
     final int[] potionSizes = new int[]{200, 250, 300};
 
     EditText nameTxt, waterAmount;
+    Button potionBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,16 +39,17 @@ public class CreateGoalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_goal);
 
         Bundle bundle = getIntent().getExtras();
-        if (bundle.containsKey(PARAMS_GOAL_ID))
-        {
+        if (bundle.containsKey(PARAMS_GOAL_ID)) {
             goalId = bundle.getString(PARAMS_GOAL_ID);
             loadGoalData();
         }
 
+        potionBtn = findViewById(R.id.create_goal_portion_size_btn);
+
         findViewById(R.id.create_goal_back_icon).setOnClickListener(this::onBackIconClicked);
         findViewById(R.id.create_goal_view_plans_btn).setOnClickListener(this::onViewPlansButtonClicked);
-        findViewById(R.id.create_goal_portion_size_btn).setOnClickListener(this::onSelectPotionButtonClick);
         findViewById(R.id.create_goal_save_btn).setOnClickListener(this::onSaveButtonClick);
+        potionBtn.setOnClickListener(this::onSelectPotionButtonClick);
 
         nameTxt = findViewById(R.id.create_goal_goal_name_txt);
         waterAmount = findViewById(R.id.create_goal_water_amount_txt);
@@ -74,7 +76,7 @@ public class CreateGoalActivity extends AppCompatActivity {
 
         builder.setSingleChoiceItems(items, selectedPotionIndex, (d, which) -> {
             selectedPotionIndex = which;
-            ((Button) v).setText(items[selectedPotionIndex]);
+            potionBtn.setText(items[selectedPotionIndex]);
             d.dismiss();
         });
 
@@ -84,7 +86,10 @@ public class CreateGoalActivity extends AppCompatActivity {
 
     void onSaveButtonClick(View v) {
         Goal goal = buildGoal();
-        gs.createGoal(goal, task -> Log.d("goals", "Goal was created"));
+        if (goalId == null)
+            gs.createGoal(goal, g -> goalId = g.id);
+        else
+            gs.updateGoal(goalId, goal, g -> Log.d("goal", "goal updated"));
     }
 
 
@@ -98,13 +103,21 @@ public class CreateGoalActivity extends AppCompatActivity {
         return goal;
     }
 
-    // load goal data
     private void loadGoalData() {
         gs.getGoalData(goalId, g -> {
             nameTxt.setText(g.name);
             waterAmount.setText(String.valueOf(g.waterAmount));
-            selectedPotionIndex = Collections.singletonList(potionSizes).indexOf(g.potionSize);
+            potionBtn.setText(g.potionSize + "ml Cup");
+
+            selectedPotionIndex = findIndex(potionSizes, g.potionSize);
+            if (selectedPotionIndex == -1) selectedPotionIndex = 0;
         });
+    }
+
+    private int findIndex(int[] arr, int target) {
+        for (int i = 0; i < arr.length; i++)
+            if (arr[i] == target) return i;
+        return -1;
     }
 
     String[] getPotionsStr() {
