@@ -1,6 +1,7 @@
 package com.example.icecube.services;
 
 import com.example.icecube.services.goals.GoalsService;
+import com.example.icecube.services.goals.PlansService;
 
 public class ServiceLocator {
     static ServiceLocator instance;
@@ -31,5 +32,9 @@ public class ServiceLocator {
 
     public GoalsService getGoalsService() {
         return goalsService;
+    }
+
+    public PlansService getPlansService(String goalId) {
+        return new PlansService(goalId, authService);
     }
 }

@@ -64,6 +64,7 @@ public class CreateGoalActivity extends AppCompatActivity {
     void onViewPlansButtonClicked(View v) {
         saveWork(g -> {
             Intent i = new Intent(this, PlansListActivity.class);
+            i.putExtra(PlansListActivity.PARAMS_GOAL_ID, goalId);
             startActivity(i);
         });
     }

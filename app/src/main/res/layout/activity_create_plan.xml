@@ -27,7 +27,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-
         app:layout_constraintTop_toBottomOf="@+id/create_plan_header">
 
         <TextView
@@ -43,7 +42,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragmentContainerView4"
+            android:id="@+id/create_plan_day_selector"
             android:name="com.example.icecube.fragments.goals.DaySelectorFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -64,16 +63,7 @@
             android:textColor="@color/black"
             android:textSize="@dimen/label_font_size"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fragmentContainerView4" />
-
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragmentContainerView6"
-            android:name="com.example.icecube.fragments.goals.RemindersListItemFragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintTop_toBottomOf="@+id/create_plan_day_selector" />
 
         <TextView
             android:id="@+id/textView2"
@@ -107,6 +97,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
+            android:id="@+id/create_plan_save_btn"
             android:layout_width="@dimen/primary_btn_width"
             android:layout_height="wrap_content"
             android:background="@drawable/primary_btn_bg"

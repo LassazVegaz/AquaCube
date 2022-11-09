@@ -40,6 +40,7 @@ public class GoalsService {
     }
 
     public void updateGoal(String id, Goal goal, OnSuccessListener<Goal> onSuccessListener) {
+        goal.id = id;
         fs.collection(getGoalsPath())
                 .document(id)
                 .update(new HashMap<String, Object>() {{
