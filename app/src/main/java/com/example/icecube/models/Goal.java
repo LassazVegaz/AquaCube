@@ -1,7 +1,8 @@
 package com.example.icecube.models;
 
 public class Goal {
+    public String id;
     public String name;
-    public int waterAmount;
+    public float waterAmount;
     public int potionSize;
 }
