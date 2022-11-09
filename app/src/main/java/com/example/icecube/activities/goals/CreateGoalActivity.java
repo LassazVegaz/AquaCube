@@ -39,7 +39,7 @@ public class CreateGoalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_goal);
 
         Bundle bundle = getIntent().getExtras();
-        if (bundle.containsKey(PARAMS_GOAL_ID)) {
+        if (bundle != null && bundle.containsKey(PARAMS_GOAL_ID)) {
             goalId = bundle.getString(PARAMS_GOAL_ID);
             loadGoalData();
         }
@@ -62,8 +62,7 @@ public class CreateGoalActivity extends AppCompatActivity {
     }
 
     void onViewPlansButtonClicked(View v) {
-        Goal goal = buildGoal();
-        gs.createGoal(goal, task -> {
+        saveWork(g -> {
             Intent i = new Intent(this, PlansListActivity.class);
             startActivity(i);
         });
@@ -85,17 +84,14 @@ public class CreateGoalActivity extends AppCompatActivity {
     }
 
     void onSaveButtonClick(View v) {
-        Goal goal = buildGoal();
-        if (goalId == null)
-            gs.createGoal(goal, g -> goalId = g.id);
-        else
-            gs.updateGoal(goalId, goal, g -> Log.d("goal", "goal updated"));
+        saveWork(g -> {
+        });
     }
 
 
     // utils
     @NonNull
-    private Goal buildGoal() {
+    Goal buildGoal() {
         Goal goal = new Goal();
         goal.name = nameTxt.getText().toString();
         goal.waterAmount = Float.parseFloat(waterAmount.getText().toString());
@@ -103,7 +99,7 @@ public class CreateGoalActivity extends AppCompatActivity {
         return goal;
     }
 
-    private void loadGoalData() {
+    void loadGoalData() {
         gs.getGoalData(goalId, g -> {
             nameTxt.setText(g.name);
             waterAmount.setText(String.valueOf(g.waterAmount));
@@ -114,7 +110,7 @@ public class CreateGoalActivity extends AppCompatActivity {
         });
     }
 
-    private int findIndex(int[] arr, int target) {
+    int findIndex(int[] arr, int target) {
         for (int i = 0; i < arr.length; i++)
             if (arr[i] == target) return i;
         return -1;
@@ -129,6 +125,14 @@ public class CreateGoalActivity extends AppCompatActivity {
 
         String[] res = new String[arr.size()];
         return arr.toArray(res);
+    }
+
+    void saveWork(OnSuccessListener<Goal> onSuccessListener) {
+        Goal goal = buildGoal();
+        if (goalId == null)
+            gs.createGoal(goal, onSuccessListener);
+        else
+            gs.updateGoal(goalId, goal, onSuccessListener);
     }
 
 }

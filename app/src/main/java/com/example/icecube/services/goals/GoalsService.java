@@ -32,7 +32,7 @@ public class GoalsService {
         fs.collection(getGoalsPath())
                 .add(goal)
                 .addOnSuccessListener(reference ->
-                        reference.update("uid", reference.getId())
+                        reference.update("id", reference.getId())
                                 .addOnSuccessListener(unused -> {
                                     goal.id = reference.getId();
                                     onSuccessListener.onSuccess(goal);

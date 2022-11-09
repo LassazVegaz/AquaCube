@@ -54,6 +54,14 @@ public class HeaderFragment extends Fragment {
         View tv = v.findViewById(R.id.header_text);
         ((TextView) tv).setText(mText == null ? "no label" : mText);
 
+        v.findViewById(R.id.header_backIcon).setOnClickListener(this::onBackButtonClick);
+
         return v;
+    }
+
+
+    // events
+    void onBackButtonClick(View v) {
+        getActivity().onBackPressed();
     }
 }
