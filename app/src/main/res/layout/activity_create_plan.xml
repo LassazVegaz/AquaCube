@@ -118,6 +118,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <Button
+            android:id="@+id/create_plan_add_reminder_btn"
             android:layout_width="@dimen/primary_btn_width"
             android:paddingHorizontal="0dp"
             android:layout_height="wrap_content"
