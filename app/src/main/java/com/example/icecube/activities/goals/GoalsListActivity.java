@@ -19,6 +19,7 @@ import com.google.firebase.firestore.Query;
 public class GoalsListActivity extends AppCompatActivity {
     final GoalsService gs = ServiceLocator.getInstance().getGoalsService();
     GoalsListAdapter adapter;
+    RecyclerView rv;
 
 
     @Override
@@ -35,6 +36,8 @@ public class GoalsListActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        rv.getRecycledViewPool().clear();
+        adapter.notifyDataSetChanged();
         adapter.startListening();
     }
 
@@ -60,9 +63,9 @@ public class GoalsListActivity extends AppCompatActivity {
                 .build();
         adapter = new GoalsListAdapter(options);
 
-        RecyclerView goalsListRv = findViewById(R.id.goals_list_rv);
-        goalsListRv.setLayoutManager(new LinearLayoutManager(this));
-        goalsListRv.setAdapter(adapter);
+        rv = findViewById(R.id.goals_list_rv);
+        rv.setLayoutManager(new LinearLayoutManager(this));
+        rv.setAdapter(adapter);
     }
 
 }
