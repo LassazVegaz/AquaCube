@@ -12,5 +12,7 @@
     <color name="blue_1">#CF0029FF</color>
     <color name="blue_2">#1B4DFF</color>
     <color name="red">#CFFF001F</color>
+
     <color name="day_selector_unselected">#601BAAFF</color>
+    <color name="day_selector_selected">@color/blue_1</color>
 </resources>

@@ -1,93 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.goals.DaySelectorFragment"
-    android:background="@color/page_bg">
+    android:layout_height="wrap_content"
+    android:background="@drawable/day_selector_bg"
+    android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/day_selector_bg"
-        android:orientation="horizontal">
+    <TextView
+        android:id="@+id/day_selector_mo"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_weight="1"
+        android:background="@color/day_selector_selected"
+        android:fontFamily="@font/inter"
+        android:gravity="center"
+        android:text="M"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:layout_weight="1"
-            android:background="@color/blue_1"
-            android:fontFamily="@font/inter"
-            android:gravity="center"
-            android:text="M"
-            android:textColor="@color/white"
-            android:textSize="17sp"/>
+    <TextView
+        android:id="@+id/day_selector_tu"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_weight="1"
+        android:background="@color/day_selector_selected"
+        android:fontFamily="@font/inter"
+        android:gravity="center"
+        android:text="T"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:layout_weight="1"
-            android:background="@color/blue_1"
-            android:fontFamily="@font/inter"
-            android:gravity="center"
-            android:text="T"
-            android:textColor="@color/white"
-            android:textSize="17sp" />
+    <TextView
+        android:id="@+id/day_selector_we"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_weight="1"
+        android:background="@color/day_selector_selected"
+        android:fontFamily="@font/inter"
+        android:gravity="center"
+        android:text="W"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:layout_weight="1"
-            android:background="@color/blue_1"
-            android:fontFamily="@font/inter"
-            android:gravity="center"
-            android:text="W"
-            android:textColor="@color/white"
-            android:textSize="17sp" />
+    <TextView
+        android:id="@+id/day_selector_th"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_weight="1"
+        android:background="@color/day_selector_selected"
+        android:fontFamily="@font/inter"
+        android:gravity="center"
+        android:text="T"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:layout_weight="1"
-            android:background="@color/blue_1"
-            android:fontFamily="@font/inter"
-            android:gravity="center"
-            android:text="T"
-            android:textColor="@color/white"
-            android:textSize="17sp" />
+    <TextView
+        android:id="@+id/day_selector_fr"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_weight="1"
+        android:background="@color/day_selector_unselected"
+        android:fontFamily="@font/inter"
+        android:gravity="center"
+        android:text="F"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:layout_weight="1"
-            android:background="@color/day_selector_unselected"
-            android:fontFamily="@font/inter"
-            android:gravity="center"
-            android:text="F"
-            android:textColor="@color/white"
-            android:textSize="17sp" />
+    <TextView
+        android:id="@+id/day_selector_sa"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_weight="1"
+        android:background="@color/day_selector_unselected"
+        android:fontFamily="@font/inter"
+        android:gravity="center"
+        android:text="S"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:layout_weight="1"
-            android:background="@color/day_selector_unselected"
-            android:fontFamily="@font/inter"
-            android:gravity="center"
-            android:text="S"
-            android:textColor="@color/white"
-            android:textSize="17sp" />
+    <TextView
+        android:id="@+id/day_selector_su"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_weight="1"
+        android:background="@color/day_selector_unselected"
+        android:fontFamily="@font/inter"
+        android:gravity="center"
+        android:text="S"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="45dp"
-            android:layout_weight="1"
-            android:background="@color/day_selector_unselected"
-            android:fontFamily="@font/inter"
-            android:gravity="center"
-            android:text="S"
-            android:textColor="@color/white"
-            android:textSize="17sp" />
-
-    </LinearLayout>
-</FrameLayout>
+</LinearLayout>
