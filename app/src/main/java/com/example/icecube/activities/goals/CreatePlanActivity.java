@@ -3,6 +3,7 @@ package com.example.icecube.activities.goals;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.icecube.R;
 

@@ -25,6 +25,8 @@
 
         <activity android:name=".activities.goals.CreateGoalActivity" />
         <activity android:name=".activities.goals.PlansListActivity" />
+        <activity android:name=".activities.goals.CreatePlanActivity" />
+        <activity android:name=".activities.goals.CreateReminderActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
