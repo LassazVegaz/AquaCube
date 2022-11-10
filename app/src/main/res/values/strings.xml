@@ -18,4 +18,9 @@
     <string name="goal_li_def_water_amount">4 liters per day</string>
     <string name="goal_li_def_status">Active</string>
     <string name="add_btn_text">+</string>
+    <string name="app_title">Aqua Cube</string>
+    <string name="home_population_menu">POPULATION MENU</string>
+    <string name="home_campaigns">CAMPAIGNS</string>
+    <string name="home_goals">GOALS</string>
+    <string name="home_complains">COMPLAINS</string>
 </resources>
