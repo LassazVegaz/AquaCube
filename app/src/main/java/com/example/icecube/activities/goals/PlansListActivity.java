@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.icecube.R;
+import com.example.icecube.adapters.goals.OnPlanClickListener;
 import com.example.icecube.adapters.goals.PlansListAdapter;
 import com.example.icecube.models.Plan;
 import com.example.icecube.services.ServiceLocator;
@@ -34,7 +35,7 @@ public class PlansListActivity extends AppCompatActivity {
         ps = ServiceLocator.getInstance().getPlansService(goalId);
         setupAdapter();
 
-        findViewById(R.id.plans_list_add_btn).setOnClickListener(this::onAddButtonClicked);
+        findViewById(R.id.plans_list_add_btn).setOnClickListener(this::onAddButtonClick);
     }
 
     @Override
@@ -52,10 +53,12 @@ public class PlansListActivity extends AppCompatActivity {
     }
 
     // events
-    void onAddButtonClicked(View v) {
-        Intent i = new Intent(this, CreatePlanActivity.class);
-        i.putExtra(CreatePlanActivity.PARAMS_GOAL_ID, goalId);
-        startActivity(i);
+    void onAddButtonClick(View v) {
+        moveToCreatePlan(null);
+    }
+
+    void onPlanClick(View v, String plainId) {
+        moveToCreatePlan(plainId);
     }
 
 
@@ -65,11 +68,21 @@ public class PlansListActivity extends AppCompatActivity {
         FirestoreRecyclerOptions<Plan> options = new FirestoreRecyclerOptions.Builder<Plan>()
                 .setQuery(query, Plan.class)
                 .build();
+
         adapter = new PlansListAdapter(options);
+        adapter.setOnClickListener(this::onPlanClick);
 
         rv = findViewById(R.id.plans_list_rv);
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(adapter);
+    }
+
+    void moveToCreatePlan(String planId) {
+        Intent i = new Intent(this, CreatePlanActivity.class);
+        i.putExtra(CreatePlanActivity.PARAMS_GOAL_ID, goalId);
+        if (planId != null) i.putExtra(CreatePlanActivity.PARAMS_PLAN_ID, planId);
+
+        startActivity(i);
     }
 
 }

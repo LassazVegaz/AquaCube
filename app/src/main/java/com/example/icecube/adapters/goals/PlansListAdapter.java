@@ -16,6 +16,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
 public class PlansListAdapter extends FirestoreRecyclerAdapter<Plan, PlansListAdapter.PlanItemViewHolder> {
+    private OnPlanClickListener onClickListener;
 
     public PlansListAdapter(@NonNull FirestoreRecyclerOptions<Plan> options) {
         super(options);
@@ -23,7 +24,12 @@ public class PlansListAdapter extends FirestoreRecyclerAdapter<Plan, PlansListAd
 
     @Override
     protected void onBindViewHolder(@NonNull PlanItemViewHolder holder, int position, @NonNull Plan model) {
-        for(int i = 0; i  < 7; i++) {
+        holder.view.setOnClickListener(view -> {
+            if (onClickListener != null) onClickListener.onClick(view, model.id);
+        });
+
+        for (int i = 0; i < 7; i++) {
+
             if (model.days.get(i))
                 holder.makeBold(i);
         }
@@ -36,14 +42,20 @@ public class PlansListAdapter extends FirestoreRecyclerAdapter<Plan, PlansListAd
         return new PlanItemViewHolder(v);
     }
 
+    public void setOnClickListener(OnPlanClickListener onClickListener) {
+        this.onClickListener = onClickListener;
+    }
 
     static class PlanItemViewHolder extends RecyclerView.ViewHolder {
-        private Typeface boldFont;
+        private final Typeface boldFont;
+        final View view;
 
         TextView[] tvs = new TextView[7];
 
         public PlanItemViewHolder(@NonNull View itemView) {
             super(itemView);
+
+            view = itemView;
 
             boldFont = ResourcesCompat.getFont(itemView.getContext(), R.font.inter_bold);
 
@@ -63,3 +75,4 @@ public class PlansListAdapter extends FirestoreRecyclerAdapter<Plan, PlansListAd
     }
 
 }
+
