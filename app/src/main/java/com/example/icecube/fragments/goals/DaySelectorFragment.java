@@ -17,7 +17,7 @@ import java.util.List;
 
 public class DaySelectorFragment extends Fragment {
 
-    int onColor, offColor;
+    int onColor, offColor, disabledColor;
     TextView[] tvs = new TextView[7];
 
     public DaySelectorFragment() {
@@ -38,6 +38,7 @@ public class DaySelectorFragment extends Fragment {
 
         onColor = getResources().getColor(R.color.day_selector_selected);
         offColor = getResources().getColor(R.color.day_selector_unselected);
+        disabledColor = getResources().getColor(R.color.day_selector_disabled);
 
         tvs[0] = view.findViewById(R.id.day_selector_mo);
         tvs[1] = view.findViewById(R.id.day_selector_tu);
@@ -57,6 +58,7 @@ public class DaySelectorFragment extends Fragment {
     // events
     void onDayButtonClick(@NonNull View v) {
         ColorDrawable bg = (ColorDrawable) v.getBackground();
+        if (bg.getColor() == disabledColor) return;
         v.setBackgroundColor(bg.getColor() == onColor ? offColor : onColor);
     }
 
@@ -77,6 +79,13 @@ public class DaySelectorFragment extends Fragment {
         for (int i = 0; i < days.size(); i++) {
             if (days.get(i))
                 tvs[i].setBackgroundColor(onColor);
+        }
+    }
+
+    public void setDisabledDays(@NonNull List<Boolean> disabledDays) {
+        for (int i = 0; i < disabledDays.size(); i++) {
+            if (!disabledDays.get(i))
+                tvs[i].setBackgroundColor(offColor);
         }
     }
 }

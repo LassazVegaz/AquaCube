@@ -15,4 +15,5 @@
 
     <color name="day_selector_unselected">#601BAAFF</color>
     <color name="day_selector_selected">@color/blue_1</color>
+    <color name="day_selector_disabled">#555454</color>
 </resources>

@@ -31,6 +31,7 @@ public class CreatePlanActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         goalId = bundle.getString(PARAMS_GOAL_ID);
         ps = ServiceLocator.getInstance().getPlansService(goalId);
+        setDisabledDays();
 
         if (bundle.containsKey(PARAMS_PLAN_ID)) {
             planId = bundle.getString(PARAMS_PLAN_ID);
@@ -67,5 +68,9 @@ public class CreatePlanActivity extends AppCompatActivity {
 
     void loadPlanData() {
         ps.getPlan(planId, plan -> daySelector.setDays(plan.days));
+    }
+
+    void setDisabledDays() {
+        ps.getDisabledDays(disabledDays -> daySelector.setDisabledDays(disabledDays));
     }
 }
