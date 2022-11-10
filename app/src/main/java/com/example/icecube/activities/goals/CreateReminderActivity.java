@@ -13,6 +13,7 @@ import com.example.icecube.fragments.HeaderFragment;
 import com.example.icecube.models.Reminder;
 import com.example.icecube.services.ServiceLocator;
 import com.example.icecube.services.goals.RemindersService;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 
 public class CreateReminderActivity extends AppCompatActivity {
@@ -42,8 +43,6 @@ public class CreateReminderActivity extends AppCompatActivity {
         rs = ServiceLocator.getInstance().getRemindersService(goalId, planId);
 
         if (bundle.containsKey(PARAMS_REMINDER_ID)) {
-            HeaderFragment header = (HeaderFragment) getSupportFragmentManager().findFragmentById(R.id.create_rem_header);
-            header.setTitle("Reminder Details");
             reminderId = bundle.getString(PARAMS_REMINDER_ID);
             loadData();
         }
@@ -55,12 +54,8 @@ public class CreateReminderActivity extends AppCompatActivity {
 
     // events
     void onSaveClick(View v) {
-        Reminder r = buildReminder();
-        if (reminderId == null)
-            rs.createReminder(r, rem -> reminderId = rem.id);
-        else
-            rs.updateReminder(reminderId, r, rem -> {
-            });
+        showSpinner();
+        saveWork(r -> hideSpinner());
     }
 
     void onDiscardClick(View v) {
@@ -69,8 +64,27 @@ public class CreateReminderActivity extends AppCompatActivity {
 
 
     // utils
+    void saveWork(OnSuccessListener<Reminder> onSuccessListener) {
+        Reminder r = buildReminder();
+        if (reminderId == null)
+            rs.createReminder(r, rem -> {
+                reminderId = rem.id;
+                onSuccessListener.onSuccess(r);
+            });
+        else
+            rs.updateReminder(reminderId, r, rem -> {
+                onSuccessListener.onSuccess(r);
+            });
+    }
+
     void loadData() {
+        showSpinner();
         rs.getReminder(reminderId, r -> {
+            hideSpinner();
+
+            HeaderFragment header = (HeaderFragment) getSupportFragmentManager().findFragmentById(R.id.create_rem_header);
+            header.setTitle("Reminder Details");
+
             noOfCupsTxt.setText(String.valueOf(r.noOfCups));
             timeTxt.setText(r.time);
             soundSwitch.setChecked(r.enableSound);

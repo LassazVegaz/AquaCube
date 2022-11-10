@@ -16,7 +16,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout="@layout/fragment_header" />
+        tools:layout="@layout/fragment_header"
+        android:text="Create Reminder" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
