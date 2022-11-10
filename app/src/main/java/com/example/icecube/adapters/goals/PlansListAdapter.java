@@ -16,7 +16,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 
 public class PlansListAdapter extends FirestoreRecyclerAdapter<Plan, PlansListAdapter.PlanItemViewHolder> {
-    private OnPlanClickListener onClickListener;
+    private OnListItemClickListener onClickListener;
 
     public PlansListAdapter(@NonNull FirestoreRecyclerOptions<Plan> options) {
         super(options);
@@ -39,7 +39,7 @@ public class PlansListAdapter extends FirestoreRecyclerAdapter<Plan, PlansListAd
         return new PlanItemViewHolder(v);
     }
 
-    public void setOnClickListener(OnPlanClickListener onClickListener) {
+    public void setOnClickListener(OnListItemClickListener onClickListener) {
         this.onClickListener = onClickListener;
     }
 

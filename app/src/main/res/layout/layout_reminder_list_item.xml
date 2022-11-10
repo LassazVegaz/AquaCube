@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/rem_li_text"
+    android:layout_height="50dp"
+    android:background="@drawable/goal_list_item"
+    android:fontFamily="@font/inter_semibold"
+    android:gravity="center"
+    android:text="5 Cups at 9.00 AM"
+    android:textColor="@color/black"
+    android:textSize="@dimen/label_font_size"
+    android:layout_marginVertical="@dimen/list_item_py"/>

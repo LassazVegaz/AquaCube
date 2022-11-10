@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.icecube.R;
-import com.example.icecube.adapters.goals.OnPlanClickListener;
 import com.example.icecube.adapters.goals.PlansListAdapter;
 import com.example.icecube.models.Plan;
 import com.example.icecube.services.ServiceLocator;
