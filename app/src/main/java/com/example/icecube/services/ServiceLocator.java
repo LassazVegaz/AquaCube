@@ -2,6 +2,7 @@ package com.example.icecube.services;
 
 import com.example.icecube.services.goals.GoalsService;
 import com.example.icecube.services.goals.PlansService;
+import com.example.icecube.services.goals.RemindersService;
 
 public class ServiceLocator {
     static ServiceLocator instance;
@@ -36,5 +37,9 @@ public class ServiceLocator {
 
     public PlansService getPlansService(String goalId) {
         return new PlansService(goalId, authService);
+    }
+
+    public RemindersService getRemindersService(String goalId, String planId) {
+        return new RemindersService(authService, goalId, planId);
     }
 }
