@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@drawable/plan_item_bg"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    app:flow_horizontalAlign="center"
+    app:flow_verticalAlign="center"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    android:layout_marginVertical="@dimen/list_item_py">
+
+    <TextView
+        android:id="@+id/plan_li_mo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/inter_extralight"
+        android:text="M"
+        android:textAlignment="center"
+        android:textSize="21sp" />
+
+    <TextView
+        android:id="@+id/plan_li_tu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/inter_extralight"
+        android:text="T"
+        android:textAlignment="center"
+        android:textSize="21sp" />
+
+    <TextView
+        android:id="@+id/plan_li_we"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/inter_extralight"
+        android:text="W"
+        android:textAlignment="center"
+        android:textSize="21sp" />
+
+    <TextView
+        android:id="@+id/plan_li_th"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/inter_extralight"
+        android:text="T"
+        android:textAlignment="center"
+        android:textSize="21sp" />
+
+    <TextView
+        android:id="@+id/plan_li_fr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/inter_extralight"
+        android:text="F"
+        android:textAlignment="center"
+        android:textSize="21sp" />
+
+    <TextView
+        android:id="@+id/plan_li_sa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/inter_extralight"
+        android:text="S"
+        android:textAlignment="center"
+        android:textSize="21sp" />
+
+    <TextView
+        android:id="@+id/plan_li_su"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:fontFamily="@font/inter_extralight"
+        android:text="S"
+        android:textAlignment="center"
+        android:textSize="21sp" />
+
+</LinearLayout>

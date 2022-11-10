@@ -7,4 +7,15 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="page_bg">#92DEF4</color>
+    <color name="blue_1">#CF0029FF</color>
+    <color name="blue_2">#1B4DFF</color>
+    <color name="red">#CFFF001F</color>
+
+    <color name="day_selector_unselected">#601BAAFF</color>
+    <color name="day_selector_selected">@color/blue_1</color>
+    <color name="day_selector_disabled">#555454</color>
+    <color name="spinner_bg">#8801093C</color>
+    <color name="spinner_circle">#6CF3E8</color>
 </resources>

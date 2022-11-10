@@ -1,3 +1,37 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name="label_font_size">14sp</dimen>
+    <dimen name="input_font_size">13sp</dimen>
+    <dimen name="header_font_size">29sp</dimen>
+
+    <dimen name="header_text_ml">56dp</dimen>
+    <dimen name="header_back_ml">16dp</dimen>
+
+    <dimen name="header_text_mt">40dp</dimen>
+    <dimen name="header_back_mt">52dp</dimen>
+
+    <dimen name="page_px">28dp</dimen>
+
+    <dimen name="motivation_txt_bm">140dp</dimen>
+    <dimen name="motivation_txt_size">17sp</dimen>
+    <dimen name="motivation_emoji_size">48sp</dimen>
+    <dimen name="motivation_emoji_mb">83dp</dimen>
+
+    <dimen name="primary_btn_width">135dp</dimen>
+    <dimen name="primary_btn_txt_size">@dimen/input_font_size</dimen>
+    <dimen name="page_first_item_mt">45dp</dimen>
+
+
+    <dimen name="bradius_1">8dp</dimen>
+    <dimen name="bradius_2">9dp</dimen>
+    <dimen name="btn_border_radius">@dimen/bradius_1</dimen>
+    <dimen name="label_input_gap">15dp</dimen>
+    <dimen name="section_gap">45dp</dimen>
+    <dimen name="page_pb">20dp</dimen>
+    <dimen name="linear_input_label_width">140dp</dimen>
+    <dimen name="add_bnt_text_size">30sp</dimen>
+    <dimen name="rv_mb">20dp</dimen>
+    <dimen name="list_item_py">10dp</dimen>
+    <dimen name="home_icon_px">30dp</dimen>
+    <dimen name="home_icon_py">20dp</dimen>
 </resources>
