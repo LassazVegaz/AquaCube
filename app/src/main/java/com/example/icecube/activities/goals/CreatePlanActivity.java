@@ -45,8 +45,6 @@ public class CreatePlanActivity extends AppCompatActivity {
         setDisabledDays();
 
         if (bundle.containsKey(PARAMS_PLAN_ID)) {
-            HeaderFragment header = (HeaderFragment) getSupportFragmentManager().findFragmentById(R.id.create_plan_header);
-            header.setTitle("Plan Details");
             planId = bundle.getString(PARAMS_PLAN_ID);
             loadPlanData();
         }
@@ -84,13 +82,19 @@ public class CreatePlanActivity extends AppCompatActivity {
     }
 
     void onSaveButtonClicked(View v) {
+        showSpinner();
         saveWork(plan -> {
+            hideSpinner();
             if (adapter == null) setupAdapter();
         });
     }
 
     void onReminderClick(View v, String reminderId) {
-        saveWork(p -> moveToCreateReminder(reminderId));
+        showSpinner();
+        saveWork(p -> {
+            hideSpinner();
+            moveToCreateReminder(reminderId);
+        });
     }
 
 
@@ -103,7 +107,15 @@ public class CreatePlanActivity extends AppCompatActivity {
     }
 
     void loadPlanData() {
-        ps.getPlan(planId, plan -> daySelector.setDays(plan.days));
+        showSpinner();
+        ps.getPlan(planId, plan -> {
+            hideSpinner();
+
+            HeaderFragment header = (HeaderFragment) getSupportFragmentManager().findFragmentById(R.id.create_plan_header);
+            header.setTitle("Plan Details");
+
+            daySelector.setDays(plan.days);
+        });
     }
 
     void setDisabledDays() {
