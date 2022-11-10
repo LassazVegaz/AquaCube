@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.icecube.R;
@@ -22,27 +23,21 @@ public class DaySelectorFragment extends Fragment {
     public DaySelectorFragment() {
     }
 
-    public static DaySelectorFragment newInstance() {
-        DaySelectorFragment fragment = new DaySelectorFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             // store args in vars
         }
-        onColor = getResources().getColor(R.color.day_selector_selected);
-        offColor = getResources().getColor(R.color.day_selector_unselected);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_day_selector, container, false);
+
+        onColor = getResources().getColor(R.color.day_selector_selected);
+        offColor = getResources().getColor(R.color.day_selector_unselected);
 
         tvs[0] = view.findViewById(R.id.day_selector_mo);
         tvs[1] = view.findViewById(R.id.day_selector_tu);
@@ -60,10 +55,11 @@ public class DaySelectorFragment extends Fragment {
 
 
     // events
-    void onDayButtonClick(View v) {
+    void onDayButtonClick(@NonNull View v) {
         ColorDrawable bg = (ColorDrawable) v.getBackground();
         v.setBackgroundColor(bg.getColor() == onColor ? offColor : onColor);
     }
+
 
     // utils
     public List<Boolean> getDays() {
@@ -75,5 +71,12 @@ public class DaySelectorFragment extends Fragment {
         }
 
         return ls;
+    }
+
+    public void setDays(@NonNull List<Boolean> days) {
+        for (int i = 0; i < days.size(); i++) {
+            if (days.get(i))
+                tvs[i].setBackgroundColor(onColor);
+        }
     }
 }

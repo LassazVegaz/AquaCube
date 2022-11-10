@@ -3,8 +3,11 @@ package com.example.icecube.services.goals;
 import com.example.icecube.models.Plan;
 import com.example.icecube.services.AuthService;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+
+import java.util.HashMap;
 
 public class PlansService {
     final String goalId;
@@ -26,8 +29,24 @@ public class PlansService {
                 });
     }
 
+    public void updatePlan(String id, Plan plan, OnSuccessListener<Plan> onSuccessListener) {
+        fs.collection(getPlanPath())
+                .document(id)
+                .update(new HashMap<String, Object>() {{
+                    put("days", plan.days);
+                }})
+                .addOnSuccessListener(unused -> onSuccessListener.onSuccess(plan));
+    }
+
     public Query getPlansQuery() {
         return fs.collection(getPlanPath());
+    }
+
+    public void getPlan(String id, OnSuccessListener<Plan> onSuccessListener) {
+        fs.collection(getPlanPath())
+                .document(id)
+                .get()
+                .addOnSuccessListener(ref -> onSuccessListener.onSuccess(ref.toObject(Plan.class)));
     }
 
     private String getPlanPath() {

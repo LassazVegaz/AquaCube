@@ -32,6 +32,11 @@ public class CreatePlanActivity extends AppCompatActivity {
         goalId = bundle.getString(PARAMS_GOAL_ID);
         ps = ServiceLocator.getInstance().getPlansService(goalId);
 
+        if (bundle.containsKey(PARAMS_PLAN_ID)) {
+            planId = bundle.getString(PARAMS_PLAN_ID);
+            loadPlanData();
+        }
+
         daySelector = (DaySelectorFragment) getSupportFragmentManager().findFragmentById(R.id.create_plan_day_selector);
 
         findViewById(R.id.create_plan_add_reminder_btn).setOnClickListener(this::onCreateReminderClicked);
@@ -45,14 +50,22 @@ public class CreatePlanActivity extends AppCompatActivity {
 
     void onSaveButtonClicked(View v) {
         Plan p = buildPlan();
-        ps.createPlan(p, plan -> Log.d("PLAN", "plan was created"));
+        if (planId == null)
+            ps.createPlan(p, plan -> planId = plan.id);
+        else
+            ps.updatePlan(planId, p, plan -> Log.d("PLAN", "plan was updated"));
     }
 
 
     // utils
     Plan buildPlan() {
         Plan p = new Plan();
+        p.id = planId;
         p.days = daySelector.getDays();
         return p;
+    }
+
+    void loadPlanData() {
+        ps.getPlan(planId, plan -> daySelector.setDays(plan.days));
     }
 }
