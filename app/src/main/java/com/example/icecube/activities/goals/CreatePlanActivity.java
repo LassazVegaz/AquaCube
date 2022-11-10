@@ -78,7 +78,7 @@ public class CreatePlanActivity extends AppCompatActivity {
 
     void onSaveButtonClicked(View v) {
         saveWork(plan -> {
-            setupAdapter();
+            if (adapter == null) setupAdapter();
         });
     }
 
