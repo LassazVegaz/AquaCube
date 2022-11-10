@@ -131,7 +131,10 @@ public class CreateGoalActivity extends AppCompatActivity {
     void saveWork(OnSuccessListener<Goal> onSuccessListener) {
         Goal goal = buildGoal();
         if (goalId == null)
-            gs.createGoal(goal, onSuccessListener);
+            gs.createGoal(goal, g -> {
+                goalId = g.id;
+                onSuccessListener.onSuccess(g);
+            });
         else
             gs.updateGoal(goalId, goal, onSuccessListener);
     }

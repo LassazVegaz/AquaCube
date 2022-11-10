@@ -1,10 +1,11 @@
 package com.example.icecube.activities.goals;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.icecube.R;
 import com.example.icecube.fragments.goals.DaySelectorFragment;
@@ -12,8 +13,6 @@ import com.example.icecube.models.Plan;
 import com.example.icecube.services.ServiceLocator;
 import com.example.icecube.services.goals.PlansService;
 import com.google.android.gms.tasks.OnSuccessListener;
-
-import java.util.List;
 
 public class CreatePlanActivity extends AppCompatActivity {
     final static String PARAMS_GOAL_ID = "goalId", PARAMS_PLAN_ID = "planId";
@@ -47,14 +46,16 @@ public class CreatePlanActivity extends AppCompatActivity {
 
     // events
     void onCreateReminderClicked(View v) {
+        saveWork(plan -> {
+            Intent i = new Intent(this, CreateReminderActivity.class);
+            i.putExtra(CreateReminderActivity.PARAMS_GOAL_ID, goalId);
+            i.putExtra(CreateReminderActivity.PARAMS_PLAN_ID, planId);
+            startActivity(i);
+        });
     }
 
     void onSaveButtonClicked(View v) {
-        Plan p = buildPlan();
-        if (planId == null)
-            ps.createPlan(p, plan -> planId = plan.id);
-        else
-            ps.updatePlan(planId, p, plan -> Log.d("PLAN", "plan was updated"));
+        saveWork(plan -> {});
     }
 
 
@@ -72,5 +73,16 @@ public class CreatePlanActivity extends AppCompatActivity {
 
     void setDisabledDays() {
         ps.getDisabledDays(disabledDays -> daySelector.setDisabledDays(disabledDays));
+    }
+
+    void saveWork(OnSuccessListener<Plan> onSuccessListener) {
+        Plan p = buildPlan();
+        if (planId == null)
+            ps.createPlan(p, plan -> {
+                planId = p.id;
+                onSuccessListener.onSuccess(plan);
+            });
+        else
+            ps.updatePlan(planId, p, onSuccessListener);
     }
 }
