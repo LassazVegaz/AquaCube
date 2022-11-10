@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.Switch;
 
 import com.example.icecube.R;
@@ -22,12 +23,14 @@ public class CreateReminderActivity extends AppCompatActivity {
     String goalId, planId, reminderId;
     EditText timeTxt, noOfCupsTxt;
     SwitchMaterial soundSwitch, vibrationSwitch;
+    FrameLayout spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_reminder);
 
+        spinner = findViewById(R.id.create_rem_spinner);
         timeTxt = findViewById(R.id.create_rem_time_txt);
         noOfCupsTxt = findViewById(R.id.create_rem_cups_txt);
         soundSwitch = findViewById(R.id.create_rem_sound_switch);
@@ -85,4 +88,13 @@ public class CreateReminderActivity extends AppCompatActivity {
 
         return r;
     }
+
+    void showSpinner() {
+        spinner.setVisibility(View.VISIBLE);
+    }
+
+    void hideSpinner() {
+        spinner.setVisibility(View.GONE);
+    }
+
 }

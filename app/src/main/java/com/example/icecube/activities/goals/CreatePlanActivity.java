@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.FrameLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,11 +30,14 @@ public class CreatePlanActivity extends AppCompatActivity {
     DaySelectorFragment daySelector;
     RemindersAdapter adapter;
     RecyclerView rv;
+    FrameLayout spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_plan);
+
+        spinner = findViewById(R.id.create_plan_spinner);
 
         Bundle bundle = getIntent().getExtras();
         goalId = bundle.getString(PARAMS_GOAL_ID);
@@ -139,4 +143,13 @@ public class CreatePlanActivity extends AppCompatActivity {
 
         startActivity(i);
     }
+
+    void showSpinner() {
+        spinner.setVisibility(View.VISIBLE);
+    }
+
+    void hideSpinner() {
+        spinner.setVisibility(View.GONE);
+    }
+
 }
