@@ -28,11 +28,8 @@ public class PlansListAdapter extends FirestoreRecyclerAdapter<Plan, PlansListAd
             if (onClickListener != null) onClickListener.onClick(view, model.id);
         });
 
-        for (int i = 0; i < 7; i++) {
-
-            if (model.days.get(i))
-                holder.makeBold(i);
-        }
+        for (int i = 0; i < 7; i++)
+            holder.setBold(i, model.days.get(i));
     }
 
     @NonNull
@@ -47,7 +44,7 @@ public class PlansListAdapter extends FirestoreRecyclerAdapter<Plan, PlansListAd
     }
 
     static class PlanItemViewHolder extends RecyclerView.ViewHolder {
-        private final Typeface boldFont;
+        private final Typeface boldFont, lightFont;
         final View view;
 
         TextView[] tvs = new TextView[7];
@@ -58,6 +55,7 @@ public class PlansListAdapter extends FirestoreRecyclerAdapter<Plan, PlansListAd
             view = itemView;
 
             boldFont = ResourcesCompat.getFont(itemView.getContext(), R.font.inter_bold);
+            lightFont = ResourcesCompat.getFont(itemView.getContext(), R.font.inter_extralight);
 
             tvs[0] = itemView.findViewById(R.id.plan_li_mo);
             tvs[1] = itemView.findViewById(R.id.plan_li_tu);
@@ -68,8 +66,8 @@ public class PlansListAdapter extends FirestoreRecyclerAdapter<Plan, PlansListAd
             tvs[6] = itemView.findViewById(R.id.plan_li_su);
         }
 
-        public void makeBold(int index) {
-            tvs[index].setTypeface(boldFont);
+        public void setBold(int index, boolean bold) {
+            tvs[index].setTypeface(bold ? boldFont : lightFont);
         }
 
     }
