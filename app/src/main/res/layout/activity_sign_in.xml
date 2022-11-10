@@ -22,7 +22,7 @@
         android:layout_marginTop="40dp"/>
 
     <EditText
-        android:id="@+id/editTextTextEmailAddress1"
+        android:id="@+id/signin_email_txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -35,7 +35,7 @@
         android:hint="Email"/>
 
     <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/signin_password_txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -45,30 +45,30 @@
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress1" />
+        app:layout_constraintTop_toBottomOf="@+id/signin_email_txt" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button3"
+        android:id="@+id/signin_login_btn"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:paddingHorizontal="40dp"
         android:text="Sign In"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2"
+        app:layout_constraintTop_toBottomOf="@+id/signin_password_txt"
         android:layout_marginTop="50dp"
         android:background="@color/blue_1"
         android:textColor="@color/white"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button4"
+        android:id="@+id/signin_register_btn"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:paddingHorizontal="40dp"
         android:text="Sign Up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3"
+        app:layout_constraintTop_toBottomOf="@+id/signin_login_btn"
         android:layout_marginTop="20dp"
         android:background="@color/black"
         android:textColor="@color/white"/>
