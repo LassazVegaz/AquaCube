@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.icecube.R;
 import com.example.icecube.adapters.goals.RemindersAdapter;
+import com.example.icecube.fragments.HeaderFragment;
 import com.example.icecube.fragments.goals.DaySelectorFragment;
 import com.example.icecube.models.Plan;
 import com.example.icecube.models.Reminder;
@@ -40,6 +41,8 @@ public class CreatePlanActivity extends AppCompatActivity {
         setDisabledDays();
 
         if (bundle.containsKey(PARAMS_PLAN_ID)) {
+            HeaderFragment header = (HeaderFragment) getSupportFragmentManager().findFragmentById(R.id.create_plan_header);
+            header.setTitle("Plan Details");
             planId = bundle.getString(PARAMS_PLAN_ID);
             loadPlanData();
         }

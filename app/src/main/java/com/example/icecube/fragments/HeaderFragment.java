@@ -19,6 +19,7 @@ public class HeaderFragment extends Fragment {
     final static String PARAM_TEXT = "text";
 
     CharSequence mText;
+    TextView tv;
 
     public static HeaderFragment newInstance(CharSequence text) {
         HeaderFragment fragment = new HeaderFragment();
@@ -51,8 +52,8 @@ public class HeaderFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_header, container, false);
-        View tv = v.findViewById(R.id.header_text);
-        ((TextView) tv).setText(mText == null ? "no label" : mText);
+        tv = v.findViewById(R.id.header_text);
+        tv.setText(mText == null ? "" : mText);
 
         v.findViewById(R.id.header_backIcon).setOnClickListener(this::onBackButtonClick);
 
@@ -63,5 +64,11 @@ public class HeaderFragment extends Fragment {
     // events
     void onBackButtonClick(View v) {
         getActivity().onBackPressed();
+    }
+
+
+    // utils
+    public void setTitle(String title) {
+        tv.setText(title);
     }
 }

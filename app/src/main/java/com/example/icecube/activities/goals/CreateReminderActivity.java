@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.Switch;
 
 import com.example.icecube.R;
+import com.example.icecube.fragments.HeaderFragment;
 import com.example.icecube.models.Reminder;
 import com.example.icecube.services.ServiceLocator;
 import com.example.icecube.services.goals.RemindersService;
@@ -38,6 +39,8 @@ public class CreateReminderActivity extends AppCompatActivity {
         rs = ServiceLocator.getInstance().getRemindersService(goalId, planId);
 
         if (bundle.containsKey(PARAMS_REMINDER_ID)) {
+            HeaderFragment header = (HeaderFragment) getSupportFragmentManager().findFragmentById(R.id.create_rem_header);
+            header.setTitle("Reminder Details");
             reminderId = bundle.getString(PARAMS_REMINDER_ID);
             loadData();
         }
