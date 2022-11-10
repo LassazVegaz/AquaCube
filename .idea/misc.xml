@@ -20,7 +20,8 @@
         <entry key="..\:/My Apps/Android/IceCube/app/src/main/res/layout/activity_home.xml" value="0.264" />
         <entry key="..\:/My Apps/Android/IceCube/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/My Apps/Android/IceCube/app/src/main/res/layout/activity_plans_list.xml" value="0.2" />
-        <entry key="..\:/My Apps/Android/IceCube/app/src/main/res/layout/activity_sign_up.xml" value="0.20512820512820512" />
+        <entry key="..\:/My Apps/Android/IceCube/app/src/main/res/layout/activity_sign_in.xml" value="0.20512820512820512" />
+        <entry key="..\:/My Apps/Android/IceCube/app/src/main/res/layout/activity_sign_up.xml" value="0.264" />
         <entry key="..\:/My Apps/Android/IceCube/app/src/main/res/layout/content_main.xml" value="0.1" />
         <entry key="..\:/My Apps/Android/IceCube/app/src/main/res/layout/fragment_day_selector.xml" value="0.3418803418803419" />
         <entry key="..\:/My Apps/Android/IceCube/app/src/main/res/layout/fragment_header.xml" value="0.4" />
