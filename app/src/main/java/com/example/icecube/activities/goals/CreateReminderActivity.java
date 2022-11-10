@@ -65,7 +65,7 @@ public class CreateReminderActivity extends AppCompatActivity {
     // utils
     void loadData() {
         rs.getReminder(reminderId, r -> {
-            noOfCupsTxt.setText(r.noOfCups);
+            noOfCupsTxt.setText(String.valueOf(r.noOfCups));
             timeTxt.setText(r.time);
             soundSwitch.setChecked(r.enableSound);
             vibrationSwitch.setChecked(r.enableVibration);

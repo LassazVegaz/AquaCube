@@ -69,6 +69,10 @@ public class PlansService {
                 });
     }
 
+    public Query getRemindersQuery(String planId) {
+        return fs.collection(getPlanPath() + "/" + planId + "/reminders");
+    }
+
     private String getPlanPath() {
         return String.format("users/%s/goals/%s/plans", as.getLoggedUserId(), goalId);
     }

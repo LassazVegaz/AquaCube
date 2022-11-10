@@ -53,7 +53,4 @@ public class RemindersService {
                         onSuccessListener.onSuccess(d.toObject(Reminder.class)));
     }
 
-    public Query getRemindersQuery() {
-        return fs.collection(getRemindersPath());
-    }
 }

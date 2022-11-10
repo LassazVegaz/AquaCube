@@ -6,12 +6,17 @@ import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.icecube.R;
+import com.example.icecube.adapters.goals.RemindersAdapter;
 import com.example.icecube.fragments.goals.DaySelectorFragment;
 import com.example.icecube.models.Plan;
+import com.example.icecube.models.Reminder;
 import com.example.icecube.services.ServiceLocator;
 import com.example.icecube.services.goals.PlansService;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 public class CreatePlanActivity extends AppCompatActivity {
@@ -21,6 +26,8 @@ public class CreatePlanActivity extends AppCompatActivity {
     String goalId;
     String planId;
     DaySelectorFragment daySelector;
+    RemindersAdapter adapter;
+    RecyclerView rv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,21 +48,42 @@ public class CreatePlanActivity extends AppCompatActivity {
 
         findViewById(R.id.create_plan_add_reminder_btn).setOnClickListener(this::onCreateReminderClicked);
         findViewById(R.id.create_plan_save_btn).setOnClickListener(this::onSaveButtonClicked);
+
+        setupAdapter();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (rv == null || adapter == null) return;
+        rv.getRecycledViewPool().clear();
+        adapter.notifyDataSetChanged();
+        adapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        if (adapter == null) return;
+        adapter.stopListening();
     }
 
 
     // events
     void onCreateReminderClicked(View v) {
-        saveWork(plan -> {
-            Intent i = new Intent(this, CreateReminderActivity.class);
-            i.putExtra(CreateReminderActivity.PARAMS_GOAL_ID, goalId);
-            i.putExtra(CreateReminderActivity.PARAMS_PLAN_ID, planId);
-            startActivity(i);
-        });
+        saveWork(plan -> moveToCreateReminder(null));
     }
 
     void onSaveButtonClicked(View v) {
-        saveWork(plan -> {});
+        saveWork(plan -> {
+            setupAdapter();
+        });
+    }
+
+    void onReminderClick(View v, String reminderId) {
+        saveWork(p -> moveToCreateReminder(reminderId));
     }
 
 
@@ -84,5 +112,28 @@ public class CreatePlanActivity extends AppCompatActivity {
             });
         else
             ps.updatePlan(planId, p, onSuccessListener);
+    }
+
+    void setupAdapter() {
+        if (planId == null) return;
+
+        FirestoreRecyclerOptions<Reminder> options = new FirestoreRecyclerOptions.Builder<Reminder>()
+                .setQuery(ps.getRemindersQuery(planId), Reminder.class)
+                .build();
+        adapter = new RemindersAdapter(options, this::onReminderClick);
+
+        rv = findViewById(R.id.create_plan_rv);
+        rv.setLayoutManager(new LinearLayoutManager(this));
+        rv.setAdapter(adapter);
+    }
+
+    void moveToCreateReminder(String reminderId) {
+        Intent i = new Intent(this, CreateReminderActivity.class);
+
+        i.putExtra(CreateReminderActivity.PARAMS_GOAL_ID, goalId);
+        i.putExtra(CreateReminderActivity.PARAMS_PLAN_ID, planId);
+        if (reminderId != null) i.putExtra(CreateReminderActivity.PARAMS_REMINDER_ID, reminderId);
+
+        startActivity(i);
     }
 }
