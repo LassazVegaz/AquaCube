@@ -14,7 +14,7 @@
         android:theme="@style/Theme.IceCube"
         tools:targetApi="31">
         <activity
-            android:name=".activities.goals.GoalsListActivity"
+            android:name=".activities.HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".activities.auth.SignInActivity" />
+        <activity android:name=".activities.auth.SignUpActivity" />
+        <activity android:name=".activities.goals.GoalsListActivity" />
         <activity android:name=".activities.goals.CreateGoalActivity" />
         <activity android:name=".activities.goals.PlansListActivity" />
         <activity android:name=".activities.goals.CreatePlanActivity" />
