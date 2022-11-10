@@ -134,4 +134,23 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <FrameLayout
+        android:id="@+id/create_plan_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/spinner_bg"
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ProgressBar
+            android:id="@+id/create_plan_progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/spinner_circle" />
+
+    </FrameLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

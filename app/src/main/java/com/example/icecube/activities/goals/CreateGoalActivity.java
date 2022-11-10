@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -32,6 +33,7 @@ public class CreateGoalActivity extends AppCompatActivity {
 
     EditText nameTxt, waterAmount;
     Button potionBtn;
+    FrameLayout spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,15 +46,17 @@ public class CreateGoalActivity extends AppCompatActivity {
             loadGoalData();
         }
 
-        potionBtn = findViewById(R.id.create_goal_portion_size_btn);
 
         findViewById(R.id.create_goal_back_icon).setOnClickListener(this::onBackIconClicked);
         findViewById(R.id.create_goal_view_plans_btn).setOnClickListener(this::onViewPlansButtonClicked);
         findViewById(R.id.create_goal_save_btn).setOnClickListener(this::onSaveButtonClick);
+
+        potionBtn = findViewById(R.id.create_goal_portion_size_btn);
         potionBtn.setOnClickListener(this::onSelectPotionButtonClick);
 
         nameTxt = findViewById(R.id.create_goal_goal_name_txt);
         waterAmount = findViewById(R.id.create_goal_water_amount_txt);
+        spinner = findViewById(R.id.create_goal_spinner);
     }
 
 
@@ -62,7 +66,9 @@ public class CreateGoalActivity extends AppCompatActivity {
     }
 
     void onViewPlansButtonClicked(View v) {
+        showSpinner();
         saveWork(g -> {
+            hideSpinner();
             Intent i = new Intent(this, PlansListActivity.class);
             i.putExtra(PlansListActivity.PARAMS_GOAL_ID, goalId);
             startActivity(i);
@@ -85,8 +91,8 @@ public class CreateGoalActivity extends AppCompatActivity {
     }
 
     void onSaveButtonClick(View v) {
-        saveWork(g -> {
-        });
+        showSpinner();
+        saveWork(g -> hideSpinner());
     }
 
 
@@ -137,6 +143,14 @@ public class CreateGoalActivity extends AppCompatActivity {
             });
         else
             gs.updateGoal(goalId, goal, onSuccessListener);
+    }
+
+    void showSpinner() {
+        spinner.setVisibility(View.VISIBLE);
+    }
+
+    void hideSpinner() {
+        spinner.setVisibility(View.GONE);
     }
 
 }
