@@ -8,7 +8,7 @@
     android:background="@drawable/goal_list_item"
     android:paddingHorizontal="20dp"
     android:paddingVertical="10dp"
-    android:layout_marginVertical="10dp">
+    android:layout_marginVertical="@dimen/list_item_py">
 
     <TextView
         android:id="@+id/goal_li_name"

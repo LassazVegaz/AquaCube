@@ -4,6 +4,7 @@ import com.example.icecube.models.Plan;
 import com.example.icecube.services.AuthService;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 public class PlansService {
     final String goalId;
@@ -23,6 +24,10 @@ public class PlansService {
                     ref.update("id", ref.getId())
                             .addOnSuccessListener(unused -> onSuccessListener.onSuccess(plan));
                 });
+    }
+
+    public Query getPlansQuery() {
+        return fs.collection(getPlanPath());
     }
 
     private String getPlanPath() {

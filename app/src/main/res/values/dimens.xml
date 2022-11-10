@@ -30,4 +30,6 @@
     <dimen name="page_pb">20dp</dimen>
     <dimen name="linear_input_label_width">140dp</dimen>
     <dimen name="add_bnt_text_size">30sp</dimen>
+    <dimen name="rv_mb">20dp</dimen>
+    <dimen name="list_item_py">10dp</dimen>
 </resources>

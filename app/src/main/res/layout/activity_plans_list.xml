@@ -28,18 +28,19 @@
         app:layout_constraintTop_toBottomOf="@+id/fragmentContainerView2"
         app:layout_constraintVertical_bias="0.0">
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragmentContainerView3"
-            android:name="com.example.icecube.fragments.goals.PlanItemFragment"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/plans_list_rv"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="72dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView3"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:layout="@layout/fragment_plan_item" />
+            android:layout_marginBottom="@dimen/rv_mb"
+            android:layout_marginTop="@dimen/page_first_item_mt"/>
 
         <TextView
+            android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/motivation_txt_bm"
@@ -47,12 +48,12 @@
             android:text="All days are well planned"
             android:textAlignment="center"
             android:textAllCaps="true"
+            android:textColor="@color/black"
             android:textSize="@dimen/motivation_txt_size"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:textStyle="bold"
-            android:textColor="@color/black"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:layout_width="wrap_content"
