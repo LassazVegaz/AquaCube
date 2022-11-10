@@ -40,6 +40,8 @@ public class CreateGoalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_goal);
 
+        spinner = findViewById(R.id.create_goal_spinner);
+
         Bundle bundle = getIntent().getExtras();
         if (bundle != null && bundle.containsKey(PARAMS_GOAL_ID)) {
             goalId = bundle.getString(PARAMS_GOAL_ID);
@@ -56,7 +58,6 @@ public class CreateGoalActivity extends AppCompatActivity {
 
         nameTxt = findViewById(R.id.create_goal_goal_name_txt);
         waterAmount = findViewById(R.id.create_goal_water_amount_txt);
-        spinner = findViewById(R.id.create_goal_spinner);
     }
 
 
@@ -107,7 +108,9 @@ public class CreateGoalActivity extends AppCompatActivity {
     }
 
     void loadGoalData() {
+        showSpinner();
         gs.getGoalData(goalId, g -> {
+            hideSpinner();
             nameTxt.setText(g.name);
             waterAmount.setText(String.valueOf(g.waterAmount));
             potionBtn.setText(g.potionSize + "ml Cup");
