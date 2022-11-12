@@ -9,6 +9,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.SuccessContinuation;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
+import com.google.firebase.firestore.AggregateQuerySnapshot;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -60,6 +61,12 @@ public class GoalsService {
                 .document(id)
                 .get()
                 .addOnSuccessListener(d -> onSuccessListener.onSuccess(d.toObject(Goal.class)));
+    }
+
+    public void areGoalsEmpty(OnSuccessListener<Boolean> onSuccessListener) {
+        fs.collection(getGoalsPath())
+                .get()
+                .addOnSuccessListener(snaps -> onSuccessListener.onSuccess(snaps.isEmpty()));
     }
 
     // private

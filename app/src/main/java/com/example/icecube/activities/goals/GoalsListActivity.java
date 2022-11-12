@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 
 import com.example.icecube.R;
 import com.example.icecube.adapters.goals.GoalsListAdapter;
@@ -18,8 +20,10 @@ import com.google.firebase.firestore.Query;
 
 public class GoalsListActivity extends AppCompatActivity {
     final GoalsService gs = ServiceLocator.getInstance().getGoalsService();
+
     GoalsListAdapter adapter;
     RecyclerView rv;
+    FrameLayout spinner;
 
 
     @Override
@@ -27,9 +31,12 @@ public class GoalsListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goals_list);
 
+        spinner = findViewById(R.id.goals_list_spinner);
+
         Button addBtn = findViewById(R.id.goals_list_add_btn);
         addBtn.setOnClickListener((v) -> onAddButtonClick());
 
+        setNoGoalsBanner();
         setupAdapter();
     }
 
@@ -56,7 +63,7 @@ public class GoalsListActivity extends AppCompatActivity {
 
 
     // utils
-    private void setupAdapter() {
+    void setupAdapter() {
         Query query = gs.getGoalsQuery();
         FirestoreRecyclerOptions<Goal> options = new FirestoreRecyclerOptions.Builder<Goal>()
                 .setQuery(query, Goal.class)
@@ -66,6 +73,23 @@ public class GoalsListActivity extends AppCompatActivity {
         rv = findViewById(R.id.goals_list_rv);
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setAdapter(adapter);
+    }
+
+    void setNoGoalsBanner() {
+        showSpinner();
+        gs.areGoalsEmpty(isEmpty -> {
+            hideSpinner();
+            if (isEmpty)
+                findViewById(R.id.goals_list_no_goals_banner).setVisibility(View.VISIBLE);
+        });
+    }
+
+    void showSpinner() {
+        spinner.setVisibility(View.VISIBLE);
+    }
+
+    void hideSpinner() {
+        spinner.setVisibility(View.GONE);
     }
 
 }
