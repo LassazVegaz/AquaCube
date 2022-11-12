@@ -1,24 +1,14 @@
 package com.example.icecube.services.goals;
 
-import androidx.annotation.NonNull;
-
 import com.example.icecube.models.Goal;
 import com.example.icecube.services.AuthService;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.SuccessContinuation;
 import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.Tasks;
-import com.google.firebase.firestore.AggregateQuerySnapshot;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.function.Function;
 
 public class GoalsService {
     final AuthService authService;
@@ -57,10 +47,13 @@ public class GoalsService {
     }
 
     public void getGoalData(String id, OnSuccessListener<Goal> onSuccessListener) {
-        fs.collection(getGoalsPath())
+        getGoalData(id).addOnSuccessListener(d -> onSuccessListener.onSuccess(d.toObject(Goal.class)));
+    }
+
+    public Task<DocumentSnapshot> getGoalData(String id) {
+        return fs.collection(getGoalsPath())
                 .document(id)
-                .get()
-                .addOnSuccessListener(d -> onSuccessListener.onSuccess(d.toObject(Goal.class)));
+                .get();
     }
 
     public void areGoalsEmpty(OnSuccessListener<Boolean> onSuccessListener) {

@@ -1,14 +1,20 @@
 package com.example.icecube.services.goals;
 
+import com.example.icecube.models.Goal;
 import com.example.icecube.models.Plan;
+import com.example.icecube.models.Reminder;
 import com.example.icecube.services.AuthService;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.function.BinaryOperator;
 
 public class PlansService {
     final String goalId;
@@ -61,7 +67,7 @@ public class PlansService {
                     for (Plan p : plans) {
                         List<Boolean> days = p.days;
 
-                        for(int i = 0; i < 7; i++)
+                        for (int i = 0; i < 7; i++)
                             disabledDays[i] = disabledDays[i] || days.get(i);
                     }
 
@@ -73,7 +79,36 @@ public class PlansService {
         return fs.collection(getPlanPath() + "/" + planId + "/reminders");
     }
 
-    private String getPlanPath() {
+    public void getRemainingCups(String planId, OnSuccessListener<Integer> onSuccessListener) {
+        new Thread(() -> {
+            try {
+
+                QuerySnapshot snaps = Tasks.await(getRemindersQuery(planId).get());
+                List<Reminder> rems = snaps.toObjects(Reminder.class);
+                int totalCups = getCupsSum(rems);
+
+                Goal g = Tasks.await(fs.collection("users/" + as.getLoggedUserId() + "/goals")
+                        .document(goalId).get()).toObject(Goal.class);
+                int goalCups = (int) Math.ceil(g.waterAmount * 1000 / g.potionSize);
+
+                onSuccessListener.onSuccess(goalCups - totalCups);
+
+            } catch (ExecutionException | InterruptedException e) {
+                e.printStackTrace();
+                onSuccessListener.onSuccess(0);
+            }
+        }).start();
+    }
+
+
+    int getCupsSum(List<Reminder> rems) {
+        int sum = 0;
+        for (int i = 0; i < rems.size(); i++)
+            sum += rems.get(i).noOfCups;
+        return sum;
+    }
+
+    String getPlanPath() {
         return String.format("users/%s/goals/%s/plans", as.getLoggedUserId(), goalId);
     }
 }

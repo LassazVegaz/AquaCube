@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,6 +25,10 @@ import com.google.android.gms.tasks.OnSuccessListener;
 public class CreatePlanActivity extends AppCompatActivity {
     final static String PARAMS_GOAL_ID = "goalId", PARAMS_PLAN_ID = "planId";
 
+    private final static String
+            MTV_TEXT_BAD = "%d cups are remaining", MTV_EMOJI_BAD = "😬",
+            MTV_TEXT_GOOD = "This is a great plan", MTV_EMOJI_GOOD = "🫡";
+
     PlansService ps;
     String goalId;
     String planId;
@@ -31,13 +36,20 @@ public class CreatePlanActivity extends AppCompatActivity {
     RemindersAdapter adapter;
     RecyclerView rv;
     FrameLayout spinner;
+    TextView mtvTxt, mtvEmojiTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_plan);
 
+        daySelector = (DaySelectorFragment) getSupportFragmentManager().findFragmentById(R.id.create_plan_day_selector);
         spinner = findViewById(R.id.create_plan_spinner);
+        mtvTxt = findViewById(R.id.create_plan_mtv_txt);
+        mtvEmojiTxt = findViewById(R.id.create_plan_mtv_emoji);
+
+        findViewById(R.id.create_plan_add_reminder_btn).setOnClickListener(this::onCreateReminderClicked);
+        findViewById(R.id.create_plan_save_btn).setOnClickListener(this::onSaveButtonClicked);
 
         Bundle bundle = getIntent().getExtras();
         goalId = bundle.getString(PARAMS_GOAL_ID);
@@ -49,12 +61,13 @@ public class CreatePlanActivity extends AppCompatActivity {
             loadPlanData();
         }
 
-        daySelector = (DaySelectorFragment) getSupportFragmentManager().findFragmentById(R.id.create_plan_day_selector);
-
-        findViewById(R.id.create_plan_add_reminder_btn).setOnClickListener(this::onCreateReminderClicked);
-        findViewById(R.id.create_plan_save_btn).setOnClickListener(this::onSaveButtonClicked);
-
         setupAdapter();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setMotivationText();
     }
 
     @Override
@@ -162,6 +175,23 @@ public class CreatePlanActivity extends AppCompatActivity {
 
     void hideSpinner() {
         spinner.setVisibility(View.GONE);
+    }
+
+    void setMotivationText() {
+        ps.getRemainingCups(planId, cups -> {
+            String txt = MTV_TEXT_GOOD, emo = MTV_EMOJI_GOOD;
+            if (cups > 0) {
+                txt = String.format(MTV_TEXT_BAD, cups);
+                emo = MTV_EMOJI_BAD;
+            }
+
+            String finalTxt = txt;
+            String finalEmo = emo;
+            runOnUiThread(() -> {
+                mtvTxt.setText(finalTxt);
+                mtvEmojiTxt.setText(finalEmo);
+            });
+        });
     }
 
 }
