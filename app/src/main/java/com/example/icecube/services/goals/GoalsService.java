@@ -69,6 +69,13 @@ public class GoalsService {
                 .addOnSuccessListener(snaps -> onSuccessListener.onSuccess(snaps.isEmpty()));
     }
 
+    public void deleteGoal(String id, OnSuccessListener<Void> onSuccessListener) {
+        fs.collection(getGoalsPath())
+                .document(id)
+                .delete()
+                .addOnSuccessListener(onSuccessListener);
+    }
+
     // private
     String getGoalsPath() {
         return "users/" + authService.getLoggedUserId() + "/goals";
