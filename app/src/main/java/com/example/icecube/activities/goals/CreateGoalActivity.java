@@ -34,6 +34,7 @@ public class CreateGoalActivity extends AppCompatActivity {
     EditText nameTxt, waterAmount;
     Button potionBtn;
     FrameLayout spinner;
+    Button deleteBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,9 +43,13 @@ public class CreateGoalActivity extends AppCompatActivity {
 
         spinner = findViewById(R.id.create_goal_spinner);
 
+        deleteBtn = findViewById(R.id.create_goal_delete_btn);
+        deleteBtn.setOnClickListener(this::onDeleteButtonClick);
+
         Bundle bundle = getIntent().getExtras();
         if (bundle != null && bundle.containsKey(PARAMS_GOAL_ID)) {
             goalId = bundle.getString(PARAMS_GOAL_ID);
+            deleteBtn.setVisibility(View.VISIBLE);
             loadGoalData();
         }
 
@@ -93,7 +98,18 @@ public class CreateGoalActivity extends AppCompatActivity {
 
     void onSaveButtonClick(View v) {
         showSpinner();
-        saveWork(g -> hideSpinner());
+        saveWork(g -> {
+            hideSpinner();
+            deleteBtn.setVisibility(View.VISIBLE);
+        });
+    }
+
+    void onDeleteButtonClick(View v) {
+        showSpinner();
+        gs.deleteGoal(goalId, u -> {
+            hideSpinner();
+            finish();
+        });
     }
 
 

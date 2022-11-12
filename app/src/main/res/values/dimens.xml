@@ -36,4 +36,5 @@
     <dimen name="home_icon_px">30dp</dimen>
     <dimen name="home_icon_py">20dp</dimen>
     <dimen name="txt_px">10dp</dimen>
+    <dimen name="delete_btn_mb">10dp</dimen>
 </resources>
