@@ -25,6 +25,7 @@
     <dimen name="bradius_1">8dp</dimen>
     <dimen name="bradius_2">9dp</dimen>
     <dimen name="btn_border_radius">@dimen/bradius_1</dimen>
+    <dimen name="txt_border_radius">@dimen/bradius_1</dimen>
     <dimen name="label_input_gap">15dp</dimen>
     <dimen name="section_gap">45dp</dimen>
     <dimen name="page_pb">20dp</dimen>
@@ -34,4 +35,6 @@
     <dimen name="list_item_py">10dp</dimen>
     <dimen name="home_icon_px">30dp</dimen>
     <dimen name="home_icon_py">20dp</dimen>
+    <dimen name="txt_px">10dp</dimen>
+    <dimen name="delete_btn_mb">10dp</dimen>
 </resources>

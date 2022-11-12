@@ -5,4 +5,5 @@ public class Goal {
     public String name;
     public float waterAmount;
     public int potionSize;
+    public boolean active;
 }

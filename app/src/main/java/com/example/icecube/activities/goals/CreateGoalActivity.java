@@ -2,11 +2,14 @@ package com.example.icecube.activities.goals;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.Switch;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -16,24 +19,27 @@ import com.example.icecube.models.Goal;
 import com.example.icecube.R;
 import com.example.icecube.services.ServiceLocator;
 import com.example.icecube.services.goals.GoalsService;
-import com.google.android.gms.common.util.ArrayUtils;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 
 public class CreateGoalActivity extends AppCompatActivity {
     public final static String PARAMS_GOAL_ID = "goalId";
+
+    final static String MTV_TXT = "You have to drink only %d cups of water per day";
 
     String goalId;
     int selectedPotionIndex = 0;
     GoalsService gs = ServiceLocator.getInstance().getGoalsService();
     final int[] potionSizes = new int[]{200, 250, 300};
 
-    EditText nameTxt, waterAmount;
+    EditText nameTxt, waterAmountTxt;
+    TextView mtvTxt, activatorLbl;
     Button potionBtn;
     FrameLayout spinner;
+    Button deleteBtn;
+    SwitchMaterial activatorSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,23 +47,43 @@ public class CreateGoalActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_goal);
 
         spinner = findViewById(R.id.create_goal_spinner);
+        mtvTxt = findViewById(R.id.create_goal_mtv_txt);
+        nameTxt = findViewById(R.id.create_goal_goal_name_txt);
+        activatorLbl = findViewById(R.id.create_goal_activate_lbl);
+        activatorSwitch = findViewById(R.id.create_goal_activate_switch);
 
-        Bundle bundle = getIntent().getExtras();
-        if (bundle != null && bundle.containsKey(PARAMS_GOAL_ID)) {
-            goalId = bundle.getString(PARAMS_GOAL_ID);
-            loadGoalData();
-        }
+        waterAmountTxt = findViewById(R.id.create_goal_water_amount_txt);
+        waterAmountTxt.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                onWaterAmountChange();
+            }
+        });
+
+        deleteBtn = findViewById(R.id.create_goal_delete_btn);
+        deleteBtn.setOnClickListener(this::onDeleteButtonClick);
+
+        potionBtn = findViewById(R.id.create_goal_portion_size_btn);
+        potionBtn.setOnClickListener(this::onSelectPotionButtonClick);
 
         findViewById(R.id.create_goal_back_icon).setOnClickListener(this::onBackIconClicked);
         findViewById(R.id.create_goal_view_plans_btn).setOnClickListener(this::onViewPlansButtonClicked);
         findViewById(R.id.create_goal_save_btn).setOnClickListener(this::onSaveButtonClick);
 
-        potionBtn = findViewById(R.id.create_goal_portion_size_btn);
-        potionBtn.setOnClickListener(this::onSelectPotionButtonClick);
-
-        nameTxt = findViewById(R.id.create_goal_goal_name_txt);
-        waterAmount = findViewById(R.id.create_goal_water_amount_txt);
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null && bundle.containsKey(PARAMS_GOAL_ID)) {
+            goalId = bundle.getString(PARAMS_GOAL_ID);
+            deleteBtn.setVisibility(View.VISIBLE);
+            loadGoalData();
+        }
     }
 
 
@@ -85,6 +111,7 @@ public class CreateGoalActivity extends AppCompatActivity {
             selectedPotionIndex = which;
             potionBtn.setText(items[selectedPotionIndex]);
             d.dismiss();
+            setMotivationText(null);
         });
 
         AlertDialog alertDialog = builder.create();
@@ -93,7 +120,22 @@ public class CreateGoalActivity extends AppCompatActivity {
 
     void onSaveButtonClick(View v) {
         showSpinner();
-        saveWork(g -> hideSpinner());
+        saveWork(g -> {
+            hideSpinner();
+            deleteBtn.setVisibility(View.VISIBLE);
+        });
+    }
+
+    void onDeleteButtonClick(View v) {
+        showSpinner();
+        gs.deleteGoal(goalId, u -> {
+            hideSpinner();
+            finish();
+        });
+    }
+
+    void onWaterAmountChange() {
+        setMotivationText(null);
     }
 
 
@@ -102,8 +144,9 @@ public class CreateGoalActivity extends AppCompatActivity {
     Goal buildGoal() {
         Goal goal = new Goal();
         goal.name = nameTxt.getText().toString();
-        goal.waterAmount = Float.parseFloat(waterAmount.getText().toString());
+        goal.waterAmount = Float.parseFloat(waterAmountTxt.getText().toString());
         goal.potionSize = potionSizes[selectedPotionIndex];
+        goal.active = activatorSwitch.isChecked();
         return goal;
     }
 
@@ -112,11 +155,14 @@ public class CreateGoalActivity extends AppCompatActivity {
         gs.getGoalData(goalId, g -> {
             hideSpinner();
             nameTxt.setText(g.name);
-            waterAmount.setText(String.valueOf(g.waterAmount));
+            waterAmountTxt.setText(String.valueOf(g.waterAmount));
             potionBtn.setText(g.potionSize + "ml Cup");
+            activatorSwitch.setChecked(g.active);
 
             selectedPotionIndex = findIndex(potionSizes, g.potionSize);
             if (selectedPotionIndex == -1) selectedPotionIndex = 0;
+
+            setMotivationText(g.waterAmount);
         });
     }
 
@@ -154,6 +200,27 @@ public class CreateGoalActivity extends AppCompatActivity {
 
     void hideSpinner() {
         spinner.setVisibility(View.GONE);
+    }
+
+    void setMotivationText(Float waterAmount) {
+        float _waterAmount = 0;
+
+        if (waterAmount == null) {
+            try {
+                _waterAmount = Float.parseFloat(waterAmountTxt.getText().toString());
+            } catch (Exception e) {
+                return;
+            }
+        } else
+            _waterAmount = waterAmount;
+
+        int cups = (int) Math.ceil(_waterAmount * 1000 / potionSizes[selectedPotionIndex]);
+        mtvTxt.setText(String.format(MTV_TXT, cups));
+    }
+
+    void hideActivator() {
+        activatorSwitch.setVisibility(View.GONE);
+        activatorLbl.setVisibility(View.GONE);
     }
 
 }

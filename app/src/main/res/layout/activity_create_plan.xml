@@ -69,7 +69,7 @@
             android:id="@+id/create_plan_rv"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/textView2"
+            app:layout_constraintBottom_toTopOf="@+id/create_plan_mtv_txt"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5"
@@ -77,27 +77,42 @@
             android:layout_marginBottom="@dimen/rv_mb"/>
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/create_plans_no_rems_banner"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fontFamily="@font/inter_semibold"
+            android:gravity="center"
+            android:text="No Reminders are set yet"
+            android:textColor="@color/black"
+            android:textSize="@dimen/label_font_size"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/create_plan_mtv_txt"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+        <TextView
+            android:id="@+id/create_plan_mtv_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/baumans"
-            android:text="2 cups are remaining"
+            android:text=""
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="@color/black"
             android:textSize="@dimen/motivation_txt_size"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/textView6"
+            app:layout_constraintBottom_toTopOf="@+id/create_plan_mtv_emoji"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/create_plan_mtv_emoji"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/motivation_emoji_mb"
             android:fontFamily="@font/baumans"
-            android:text="😬"
+            android:text=""
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="@color/black"
@@ -106,6 +121,15 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/create_plan_delete_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/delete_icon"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/create_plan_add_reminder_btn"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <Button
             android:id="@+id/create_plan_save_btn"

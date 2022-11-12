@@ -48,7 +48,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/page_first_item_mt"
+            android:background="@drawable/textbox_bg"
             android:fontFamily="@font/inter"
+            android:inputType="time"
             android:minHeight="48dp"
             android:text="00:00"
             android:textAlignment="center"
@@ -56,8 +58,7 @@
             android:textSize="@dimen/input_font_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView10"
-            app:layout_constraintTop_toTopOf="parent"
-            android:inputType="time" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView11"
@@ -77,8 +78,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/section_gap"
-            android:inputType="number"
+            android:background="@drawable/textbox_bg"
             android:fontFamily="@font/inter"
+            android:inputType="number"
             android:minHeight="48dp"
             android:text="1"
             android:textAlignment="center"
@@ -135,26 +137,27 @@
             app:layout_constraintTop_toBottomOf="@+id/create_rem_sound_switch" />
 
         <TextView
+            android:id="@+id/create_rem_mtv_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/baumans"
-            android:text="Only 1 cup is remaining"
+            android:text=""
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="@color/black"
             android:textSize="@dimen/motivation_txt_size"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/textView14"
+            app:layout_constraintBottom_toTopOf="@+id/create_rem_mtv_emoji"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/create_rem_mtv_emoji"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/motivation_emoji_mb"
             android:fontFamily="@font/baumans"
-            android:text="🥳"
+            android:text=""
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="@color/black"

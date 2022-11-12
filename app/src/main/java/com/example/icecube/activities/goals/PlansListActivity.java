@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import com.example.icecube.R;
 import com.example.icecube.adapters.goals.PlansListAdapter;
@@ -19,15 +20,24 @@ import com.google.firebase.firestore.Query;
 public class PlansListActivity extends AppCompatActivity {
     static final String PARAMS_GOAL_ID = "goalId";
 
+    private final static String
+            MTV_TEXT_BAD = "%d days are remaining", MTV_EMOJI_BAD = "😬",
+            MTV_TEXT_GOOD = "All days are well planned", MTV_EMOJI_GOOD = "😎";
+
     String goalId;
     PlansService ps;
     PlansListAdapter adapter;
     RecyclerView rv;
+    TextView mtvTxt, mtvEmojiTxt, noPlansBannerTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plans_list);
+
+        mtvTxt = findViewById(R.id.plans_list_mtv_txt);
+        mtvEmojiTxt = findViewById(R.id.plans_list_mtv_emoji);
+        noPlansBannerTxt = findViewById(R.id.plans_list_no_plans_banner);
 
         Bundle bundle = getIntent().getExtras();
         goalId = bundle.getString(PARAMS_GOAL_ID);
@@ -50,6 +60,14 @@ public class PlansListActivity extends AppCompatActivity {
         super.onStop();
         adapter.stopListening();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setMotivationText();
+        setNoPlansBanner();
+    }
+
 
     // events
     void onAddButtonClick(View v) {
@@ -82,6 +100,28 @@ public class PlansListActivity extends AppCompatActivity {
         if (planId != null) i.putExtra(CreatePlanActivity.PARAMS_PLAN_ID, planId);
 
         startActivity(i);
+    }
+
+    void setMotivationText() {
+        ps.getDisabledDays(days -> {
+            int remDays = 0;
+
+            // if a day is not disabled, it means that day is free. Which is not good
+            for (int i = 0; i < days.size(); i++)
+                if (!days.get(i)) remDays++;
+
+            if (remDays > 0) {
+                mtvTxt.setText(String.format(MTV_TEXT_BAD, remDays));
+                mtvEmojiTxt.setText(MTV_EMOJI_BAD);
+            } else {
+                mtvTxt.setText(MTV_TEXT_GOOD);
+                mtvEmojiTxt.setText(MTV_EMOJI_GOOD);
+            }
+        });
+    }
+
+    void setNoPlansBanner() {
+        ps.arePlansEmpty(isEmpty -> noPlansBannerTxt.setVisibility(isEmpty ? View.VISIBLE : View.GONE));
     }
 
 }
