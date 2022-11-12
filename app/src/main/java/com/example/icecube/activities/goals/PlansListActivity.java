@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.icecube.R;
@@ -29,6 +30,7 @@ public class PlansListActivity extends AppCompatActivity {
     PlansListAdapter adapter;
     RecyclerView rv;
     TextView mtvTxt, mtvEmojiTxt, noPlansBannerTxt;
+    Button addPlanBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,12 +41,13 @@ public class PlansListActivity extends AppCompatActivity {
         mtvEmojiTxt = findViewById(R.id.plans_list_mtv_emoji);
         noPlansBannerTxt = findViewById(R.id.plans_list_no_plans_banner);
 
+        addPlanBtn = findViewById(R.id.plans_list_add_btn);
+        addPlanBtn.setOnClickListener(this::onAddButtonClick);
+
         Bundle bundle = getIntent().getExtras();
         goalId = bundle.getString(PARAMS_GOAL_ID);
         ps = ServiceLocator.getInstance().getPlansService(goalId);
         setupAdapter();
-
-        findViewById(R.id.plans_list_add_btn).setOnClickListener(this::onAddButtonClick);
     }
 
     @Override
@@ -113,9 +116,11 @@ public class PlansListActivity extends AppCompatActivity {
             if (remDays > 0) {
                 mtvTxt.setText(String.format(MTV_TEXT_BAD, remDays));
                 mtvEmojiTxt.setText(MTV_EMOJI_BAD);
+                addPlanBtn.setEnabled(true);
             } else {
                 mtvTxt.setText(MTV_TEXT_GOOD);
                 mtvEmojiTxt.setText(MTV_EMOJI_GOOD);
+                addPlanBtn.setEnabled(false);
             }
         });
     }

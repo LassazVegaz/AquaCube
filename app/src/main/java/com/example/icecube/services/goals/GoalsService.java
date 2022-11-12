@@ -38,6 +38,7 @@ public class GoalsService {
                     put("name", goal.name);
                     put("waterAmount", goal.waterAmount);
                     put("potionSize", goal.potionSize);
+                    put("active", goal.active);
                 }})
                 .addOnSuccessListener(unused -> onSuccessListener.onSuccess(goal));
     }
