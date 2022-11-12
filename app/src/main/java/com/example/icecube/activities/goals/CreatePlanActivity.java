@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
@@ -37,6 +38,7 @@ public class CreatePlanActivity extends AppCompatActivity {
     RecyclerView rv;
     FrameLayout spinner;
     TextView mtvTxt, mtvEmojiTxt;
+    Button deleteBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,9 @@ public class CreatePlanActivity extends AppCompatActivity {
         mtvTxt = findViewById(R.id.create_plan_mtv_txt);
         mtvEmojiTxt = findViewById(R.id.create_plan_mtv_emoji);
 
+        deleteBtn = findViewById(R.id.create_plan_delete_btn);
+        deleteBtn.setOnClickListener(this::onDeleteButtonClick);
+
         findViewById(R.id.create_plan_add_reminder_btn).setOnClickListener(this::onCreateReminderClicked);
         findViewById(R.id.create_plan_save_btn).setOnClickListener(this::onSaveButtonClicked);
 
@@ -58,6 +63,7 @@ public class CreatePlanActivity extends AppCompatActivity {
 
         if (bundle.containsKey(PARAMS_PLAN_ID)) {
             planId = bundle.getString(PARAMS_PLAN_ID);
+            deleteBtn.setVisibility(View.VISIBLE);
             loadPlanData();
         }
 
@@ -98,6 +104,7 @@ public class CreatePlanActivity extends AppCompatActivity {
         showSpinner();
         saveWork(plan -> {
             hideSpinner();
+            deleteBtn.setVisibility(View.VISIBLE);
             if (adapter == null) setupAdapter();
         });
     }
@@ -107,6 +114,14 @@ public class CreatePlanActivity extends AppCompatActivity {
         saveWork(p -> {
             hideSpinner();
             moveToCreateReminder(reminderId);
+        });
+    }
+
+    void onDeleteButtonClick(View v) {
+        showSpinner();
+        ps.deletePlan(planId, (u) -> {
+            hideSpinner();
+            finish();
         });
     }
 

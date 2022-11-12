@@ -107,6 +107,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/create_plan_delete_btn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/delete_icon"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@+id/create_plan_add_reminder_btn"
+            app:layout_constraintEnd_toEndOf="parent" />
+
         <Button
             android:id="@+id/create_plan_save_btn"
             android:layout_width="@dimen/primary_btn_width"

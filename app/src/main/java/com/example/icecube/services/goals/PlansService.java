@@ -100,6 +100,13 @@ public class PlansService {
         }).start();
     }
 
+    public void deletePlan(String planId, OnSuccessListener<Void> onSuccessListener) {
+        fs.collection(getPlanPath())
+                .document(planId)
+                .delete()
+                .addOnSuccessListener(onSuccessListener);
+    }
+
 
     int getCupsSum(List<Reminder> rems) {
         int sum = 0;
