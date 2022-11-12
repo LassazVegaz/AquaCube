@@ -48,7 +48,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/page_first_item_mt"
+            android:background="@drawable/textbox_bg"
             android:fontFamily="@font/inter"
+            android:inputType="time"
             android:minHeight="48dp"
             android:text="00:00"
             android:textAlignment="center"
@@ -56,8 +58,7 @@
             android:textSize="@dimen/input_font_size"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView10"
-            app:layout_constraintTop_toTopOf="parent"
-            android:inputType="time" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView11"
@@ -77,8 +78,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/section_gap"
-            android:inputType="number"
+            android:background="@drawable/textbox_bg"
             android:fontFamily="@font/inter"
+            android:inputType="number"
             android:minHeight="48dp"
             android:text="1"
             android:textAlignment="center"
