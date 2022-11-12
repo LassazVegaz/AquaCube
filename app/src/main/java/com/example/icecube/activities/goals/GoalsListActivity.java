@@ -36,13 +36,14 @@ public class GoalsListActivity extends AppCompatActivity {
         Button addBtn = findViewById(R.id.goals_list_add_btn);
         addBtn.setOnClickListener((v) -> onAddButtonClick());
 
-        setNoGoalsBanner();
         setupAdapter();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+
+        setNoGoalsBanner();
         rv.getRecycledViewPool().clear();
         adapter.notifyDataSetChanged();
         adapter.startListening();
