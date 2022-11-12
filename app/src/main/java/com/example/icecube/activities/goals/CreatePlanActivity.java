@@ -38,7 +38,7 @@ public class CreatePlanActivity extends AppCompatActivity {
     RecyclerView rv;
     FrameLayout spinner;
     TextView mtvTxt, mtvEmojiTxt, noRemsBannerTxt;
-    Button deleteBtn;
+    Button deleteBtn, addRemBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +54,9 @@ public class CreatePlanActivity extends AppCompatActivity {
         deleteBtn = findViewById(R.id.create_plan_delete_btn);
         deleteBtn.setOnClickListener(this::onDeleteButtonClick);
 
-        findViewById(R.id.create_plan_add_reminder_btn).setOnClickListener(this::onCreateReminderClicked);
+        addRemBtn = findViewById(R.id.create_plan_add_reminder_btn);
+        addRemBtn.setOnClickListener(this::onCreateReminderClicked);
+
         findViewById(R.id.create_plan_save_btn).setOnClickListener(this::onSaveButtonClicked);
 
         Bundle bundle = getIntent().getExtras();
@@ -207,6 +209,7 @@ public class CreatePlanActivity extends AppCompatActivity {
             runOnUiThread(() -> {
                 mtvTxt.setText(finalTxt);
                 mtvEmojiTxt.setText(finalEmo);
+                addRemBtn.setEnabled(cups > 0);
             });
         });
     }
