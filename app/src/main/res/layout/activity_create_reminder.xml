@@ -137,6 +137,7 @@
             app:layout_constraintTop_toBottomOf="@+id/create_rem_sound_switch" />
 
         <TextView
+            android:id="@+id/create_rem_mtv_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/baumans"
@@ -146,12 +147,12 @@
             android:textColor="@color/black"
             android:textSize="@dimen/motivation_txt_size"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/textView14"
+            app:layout_constraintBottom_toTopOf="@+id/create_rem_mtv_emoji"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/create_rem_mtv_emoji"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/motivation_emoji_mb"
