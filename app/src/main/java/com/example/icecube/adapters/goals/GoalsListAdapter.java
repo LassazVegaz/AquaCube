@@ -29,7 +29,7 @@ public class GoalsListAdapter extends FirestoreRecyclerAdapter<Goal, GoalsListAd
         holder.goalId = model.id;
         holder.nameTxt.setText(model.name);
         holder.setWaterAmount(model.waterAmount);
-        holder.statusTxt.setText("Active");
+        holder.statusTxt.setVisibility(model.active ? View.VISIBLE : View.GONE);
     }
 
     @NonNull
