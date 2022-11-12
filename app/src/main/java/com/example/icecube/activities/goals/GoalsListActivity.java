@@ -43,7 +43,6 @@ public class GoalsListActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        setNoGoalsBanner();
         rv.getRecycledViewPool().clear();
         adapter.notifyDataSetChanged();
         adapter.startListening();
@@ -55,6 +54,12 @@ public class GoalsListActivity extends AppCompatActivity {
         adapter.stopListening();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        setNoGoalsBanner();
+    }
 
     // events
     private void onAddButtonClick() {
@@ -77,11 +82,8 @@ public class GoalsListActivity extends AppCompatActivity {
     }
 
     void setNoGoalsBanner() {
-        showSpinner();
         gs.areGoalsEmpty(isEmpty -> {
-            hideSpinner();
-            if (isEmpty)
-                findViewById(R.id.goals_list_no_goals_banner).setVisibility(View.VISIBLE);
+            findViewById(R.id.goals_list_no_goals_banner).setVisibility(isEmpty ? View.VISIBLE : View.GONE);
         });
     }
 

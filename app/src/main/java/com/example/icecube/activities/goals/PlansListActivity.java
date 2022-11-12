@@ -28,7 +28,7 @@ public class PlansListActivity extends AppCompatActivity {
     PlansService ps;
     PlansListAdapter adapter;
     RecyclerView rv;
-    TextView mtvTxt, mtvEmojiTxt;
+    TextView mtvTxt, mtvEmojiTxt, noPlansBannerTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,7 @@ public class PlansListActivity extends AppCompatActivity {
 
         mtvTxt = findViewById(R.id.plans_list_mtv_txt);
         mtvEmojiTxt = findViewById(R.id.plans_list_mtv_emoji);
+        noPlansBannerTxt = findViewById(R.id.plans_list_no_plans_banner);
 
         Bundle bundle = getIntent().getExtras();
         goalId = bundle.getString(PARAMS_GOAL_ID);
@@ -64,7 +65,9 @@ public class PlansListActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         setMotivationText();
+        setNoPlansBanner();
     }
+
 
     // events
     void onAddButtonClick(View v) {
@@ -115,6 +118,10 @@ public class PlansListActivity extends AppCompatActivity {
                 mtvEmojiTxt.setText(MTV_EMOJI_GOOD);
             }
         });
+    }
+
+    void setNoPlansBanner() {
+        ps.arePlansEmpty(isEmpty -> noPlansBannerTxt.setVisibility(isEmpty ? View.VISIBLE : View.GONE));
     }
 
 }
