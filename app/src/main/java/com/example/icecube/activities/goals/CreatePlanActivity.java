@@ -37,7 +37,7 @@ public class CreatePlanActivity extends AppCompatActivity {
     RemindersAdapter adapter;
     RecyclerView rv;
     FrameLayout spinner;
-    TextView mtvTxt, mtvEmojiTxt;
+    TextView mtvTxt, mtvEmojiTxt, noRemsBannerTxt;
     Button deleteBtn;
 
     @Override
@@ -49,6 +49,7 @@ public class CreatePlanActivity extends AppCompatActivity {
         spinner = findViewById(R.id.create_plan_spinner);
         mtvTxt = findViewById(R.id.create_plan_mtv_txt);
         mtvEmojiTxt = findViewById(R.id.create_plan_mtv_emoji);
+        noRemsBannerTxt = findViewById(R.id.create_plans_no_rems_banner);
 
         deleteBtn = findViewById(R.id.create_plan_delete_btn);
         deleteBtn.setOnClickListener(this::onDeleteButtonClick);
@@ -74,6 +75,7 @@ public class CreatePlanActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         setMotivationText();
+        setNoRemsBanner();
     }
 
     @Override
@@ -207,6 +209,15 @@ public class CreatePlanActivity extends AppCompatActivity {
                 mtvEmojiTxt.setText(finalEmo);
             });
         });
+    }
+
+    void setNoRemsBanner() {
+        if (planId != null)
+            ps.areRemindersEmpty(planId, isEmpty -> {
+                noRemsBannerTxt.setVisibility(isEmpty ? View.VISIBLE : View.GONE);
+            });
+        else
+            noRemsBannerTxt.setVisibility(View.VISIBLE);
     }
 
 }

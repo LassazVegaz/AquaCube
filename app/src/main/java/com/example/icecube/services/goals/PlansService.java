@@ -113,6 +113,14 @@ public class PlansService {
                 .addOnSuccessListener(snaps -> onSuccessListener.onSuccess(snaps.isEmpty()));
     }
 
+    public void areRemindersEmpty(String planId, OnSuccessListener<Boolean> onSuccessListener) {
+        fs.collection(getPlanPath())
+                .document(planId)
+                .collection("reminders")
+                .get()
+                .addOnSuccessListener(snaps -> onSuccessListener.onSuccess(snaps.isEmpty()));
+    }
+
 
     int getCupsSum(List<Reminder> rems) {
         int sum = 0;
