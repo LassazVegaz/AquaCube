@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Switch;
@@ -21,10 +22,12 @@ public class CreateReminderActivity extends AppCompatActivity {
             PARAMS_GOAL_ID = "goalId", PARAMS_PLAN_ID = "planId", PARAMS_REMINDER_ID = "reminderId";
 
     RemindersService rs;
+
     String goalId, planId, reminderId;
     EditText timeTxt, noOfCupsTxt;
     SwitchMaterial soundSwitch, vibrationSwitch;
     FrameLayout spinner;
+    Button discardBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,11 @@ public class CreateReminderActivity extends AppCompatActivity {
         soundSwitch = findViewById(R.id.create_rem_sound_switch);
         vibrationSwitch = findViewById(R.id.create_rem_vibration_switch);
 
+        discardBtn = findViewById(R.id.create_rem_discard_btn);
+        discardBtn.setOnClickListener(this::onDiscardClick);
+
+        findViewById(R.id.create_rem_save_btn).setOnClickListener(this::onSaveClick);
+
         Bundle bundle = getIntent().getExtras();
         goalId = bundle.getString(PARAMS_GOAL_ID);
         planId = bundle.getString(PARAMS_PLAN_ID);
@@ -44,22 +52,31 @@ public class CreateReminderActivity extends AppCompatActivity {
 
         if (bundle.containsKey(PARAMS_REMINDER_ID)) {
             reminderId = bundle.getString(PARAMS_REMINDER_ID);
+            discardBtn.setText("Delete");
             loadData();
         }
-
-        findViewById(R.id.create_rem_discard_btn).setOnClickListener(this::onDiscardClick);
-        findViewById(R.id.create_rem_save_btn).setOnClickListener(this::onSaveClick);
     }
 
 
     // events
     void onSaveClick(View v) {
         showSpinner();
-        saveWork(r -> hideSpinner());
+        saveWork(r -> {
+            hideSpinner();
+            discardBtn.setText("Delete");
+        });
     }
 
     void onDiscardClick(View v) {
-        finish();
+        if (reminderId == null)
+            finish();
+        else {
+            showSpinner();
+            rs.deleteReminder(reminderId, u -> {
+                hideSpinner();
+                finish();
+            });
+        }
     }
 
 

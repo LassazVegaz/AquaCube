@@ -53,4 +53,11 @@ public class RemindersService {
                         onSuccessListener.onSuccess(d.toObject(Reminder.class)));
     }
 
+    public void deleteReminder(String id, OnSuccessListener<Void> onSuccessListener) {
+        fs.collection(getRemindersPath())
+                .document(id)
+                .delete()
+                .addOnSuccessListener(onSuccessListener);
+    }
+
 }
