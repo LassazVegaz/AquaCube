@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,7 @@ import com.example.icecube.R;
 import com.example.icecube.services.ServiceLocator;
 import com.example.icecube.services.goals.GoalsService;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.switchmaterial.SwitchMaterial;
 
 import java.util.ArrayList;
 
@@ -33,10 +35,11 @@ public class CreateGoalActivity extends AppCompatActivity {
     final int[] potionSizes = new int[]{200, 250, 300};
 
     EditText nameTxt, waterAmountTxt;
-    TextView mtvTxt;
+    TextView mtvTxt, activatorLbl;
     Button potionBtn;
     FrameLayout spinner;
     Button deleteBtn;
+    SwitchMaterial activatorSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,8 @@ public class CreateGoalActivity extends AppCompatActivity {
         spinner = findViewById(R.id.create_goal_spinner);
         mtvTxt = findViewById(R.id.create_goal_mtv_txt);
         nameTxt = findViewById(R.id.create_goal_goal_name_txt);
+        activatorLbl = findViewById(R.id.create_goal_activate_lbl);
+        activatorSwitch = findViewById(R.id.create_goal_activate_switch);
 
         waterAmountTxt = findViewById(R.id.create_goal_water_amount_txt);
         waterAmountTxt.addTextChangedListener(new TextWatcher() {
@@ -141,6 +146,7 @@ public class CreateGoalActivity extends AppCompatActivity {
         goal.name = nameTxt.getText().toString();
         goal.waterAmount = Float.parseFloat(waterAmountTxt.getText().toString());
         goal.potionSize = potionSizes[selectedPotionIndex];
+        goal.active = activatorSwitch.isChecked();
         return goal;
     }
 
@@ -151,6 +157,7 @@ public class CreateGoalActivity extends AppCompatActivity {
             nameTxt.setText(g.name);
             waterAmountTxt.setText(String.valueOf(g.waterAmount));
             potionBtn.setText(g.potionSize + "ml Cup");
+            activatorSwitch.setChecked(g.active);
 
             selectedPotionIndex = findIndex(potionSizes, g.potionSize);
             if (selectedPotionIndex == -1) selectedPotionIndex = 0;
@@ -209,6 +216,11 @@ public class CreateGoalActivity extends AppCompatActivity {
 
         int cups = (int) Math.ceil(_waterAmount * 1000 / potionSizes[selectedPotionIndex]);
         mtvTxt.setText(String.format(MTV_TXT, cups));
+    }
+
+    void hideActivator() {
+        activatorSwitch.setVisibility(View.GONE);
+        activatorLbl.setVisibility(View.GONE);
     }
 
 }
