@@ -93,7 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/label_input_gap"
             android:fontFamily="@font/inter"
-            android:text="250ml Cup"
+            android:text="200ml Cup"
             android:textColor="@color/black"
             android:textSize="@dimen/input_font_size"
             app:layout_constraintEnd_toEndOf="parent"
