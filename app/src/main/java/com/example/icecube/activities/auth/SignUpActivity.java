@@ -36,9 +36,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     void onLoginClick(View v) {
-        Intent i = new Intent(this, SignInActivity.class);
-        finish();
-        startActivity(i);
+        moveAndClean(SignInActivity.class);
     }
 
     void onRegisterClick(View v) {
@@ -47,9 +45,7 @@ public class SignUpActivity extends AppCompatActivity {
         as.register(u, passwordTxt.getText().toString(),
                 unused -> {
                     hideSpinner();
-                    Intent i = new Intent(this, HomeActivity.class);
-                    finish();
-                    startActivity(i);
+                    moveAndClean(HomeActivity.class);
                 }, e -> {
                     hideSpinner();
                     Toast.makeText(this, "This email address already has an account", Toast.LENGTH_SHORT).show();
@@ -72,5 +68,11 @@ public class SignUpActivity extends AppCompatActivity {
         u.name = nameTxt.getText().toString();
 
         return u;
+    }
+
+    void moveAndClean(Class<?> cls) {
+        Intent i = new Intent(this, cls);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(i);
     }
 }

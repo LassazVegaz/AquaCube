@@ -67,7 +67,7 @@
             android:background="@drawable/textbox_bg"
             android:fontFamily="@font/inter"
             android:minHeight="48dp"
-            android:text=""
+            android:text="3.7"
             android:textColor="@color/black"
             android:textSize="@dimen/input_font_size"
             app:layout_constraintEnd_toEndOf="parent"

@@ -25,6 +25,9 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
+        if (as.isLoggedIn())
+            moveAndClean(HomeActivity.class);
+
         spinner = findViewById(R.id.signin_spinner);
         emailTxt = findViewById(R.id.signin_email_txt);
         passwordTxt = findViewById(R.id.signin_password_txt);
@@ -38,9 +41,7 @@ public class SignInActivity extends AppCompatActivity {
         as.login(emailTxt.getText().toString(), passwordTxt.getText().toString(),
                 unused -> {
                     hideSpinner();
-                    Intent i = new Intent(this, HomeActivity.class);
-                    finish();
-                    startActivity(i);
+                    moveAndClean(HomeActivity.class);
                 }, e -> {
                     hideSpinner();
                     Toast.makeText(this, "Incorrect email address or password", Toast.LENGTH_SHORT).show();
@@ -48,9 +49,7 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     void onRegisterClick(View v) {
-        Intent i = new Intent(this, SignUpActivity.class);
-        finish();
-        startActivity(i);
+        moveAndClean(SignUpActivity.class);
     }
 
     void showSpinner() {
@@ -59,5 +58,11 @@ public class SignInActivity extends AppCompatActivity {
 
     void hideSpinner() {
         spinner.setVisibility(View.GONE);
+    }
+
+    void moveAndClean(Class<?> cls) {
+        Intent i = new Intent(this, cls);
+        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(i);
     }
 }

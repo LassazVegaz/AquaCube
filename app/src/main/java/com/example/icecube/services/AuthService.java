@@ -35,6 +35,14 @@ public class AuthService {
                 .addOnFailureListener(onFailureListener);
     }
 
+    public void logout() {
+        fa.signOut();
+    }
+
+    public boolean isLoggedIn() {
+        return fa.getCurrentUser() != null;
+    }
+
 
     private void createAccountsInDB(User user, OnSuccessListener<Void> onSuccessListener) {
         Map<String, Object> map = userToMap(user);
