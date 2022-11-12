@@ -23,21 +23,23 @@
         android:id="@+id/signup_email_txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/page_px"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/textbox_bg"
         android:ems="10"
+        android:hint="Email"
         android:inputType="textEmailAddress"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView19"
-        android:layout_marginTop="50dp"
-        android:hint="Email"
-        android:layout_marginHorizontal="@dimen/page_px" />
+        app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
     <EditText
         android:id="@+id/signup_password_txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:background="@drawable/textbox_bg"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
