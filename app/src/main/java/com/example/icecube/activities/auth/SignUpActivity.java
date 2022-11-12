@@ -11,13 +11,14 @@ import android.widget.Toast;
 
 import com.example.icecube.R;
 import com.example.icecube.activities.HomeActivity;
+import com.example.icecube.models.User;
 import com.example.icecube.services.AuthService;
 import com.example.icecube.services.ServiceLocator;
 
 public class SignUpActivity extends AppCompatActivity {
     final AuthService as = ServiceLocator.getInstance().getAuthService();
 
-    EditText emailTxt, passwordTxt;
+    EditText emailTxt, passwordTxt, nameTxt;
     FrameLayout spinner;
 
     @Override
@@ -28,6 +29,7 @@ public class SignUpActivity extends AppCompatActivity {
         spinner = findViewById(R.id.signup_spinner);
         emailTxt = findViewById(R.id.signup_email_txt);
         passwordTxt = findViewById(R.id.signup_password_txt);
+        nameTxt = findViewById(R.id.signup_name_txt);
 
         findViewById(R.id.signup_login_btn).setOnClickListener(this::onLoginClick);
         findViewById(R.id.signup_register_btn).setOnClickListener(this::onRegisterClick);
@@ -41,7 +43,8 @@ public class SignUpActivity extends AppCompatActivity {
 
     void onRegisterClick(View v) {
         showSpinner();
-        as.register(emailTxt.getText().toString(), passwordTxt.getText().toString(),
+        User u = buildUser();
+        as.register(u, passwordTxt.getText().toString(),
                 unused -> {
                     hideSpinner();
                     Intent i = new Intent(this, HomeActivity.class);
@@ -60,5 +63,14 @@ public class SignUpActivity extends AppCompatActivity {
 
     void hideSpinner() {
         spinner.setVisibility(View.GONE);
+    }
+
+    User buildUser() {
+        User u = new User();
+
+        u.email = emailTxt.getText().toString();
+        u.name = nameTxt.getText().toString();
+
+        return u;
     }
 }
