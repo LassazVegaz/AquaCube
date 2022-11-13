@@ -1,17 +1,16 @@
-package com.example.icecube;
+package com.example.icecube.activities.hiruni;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import org.w3c.dom.Text;
+import com.example.icecube.R;
 
 import java.util.ArrayList;
 
@@ -20,7 +19,7 @@ public class RelavantPartiesAdapter extends ArrayAdapter<RelavantParties> {
 
     public RelavantPartiesAdapter(Context context, ArrayList<RelavantParties> relavantPartiesArrayList){
 
-        super(context,R.layout.list_item_relavant_parties,relavantPartiesArrayList);
+        super(context, R.layout.list_item_relavant_parties,relavantPartiesArrayList);
 
     }
 

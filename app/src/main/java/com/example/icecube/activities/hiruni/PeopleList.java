@@ -1,4 +1,4 @@
-package com.example.icecube;
+package com.example.icecube.activities.hiruni;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,11 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.SearchView;
 
-import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.example.icecube.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -20,11 +17,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class SocietiesList extends AppCompatActivity {
+public class PeopleList extends AppCompatActivity {
 
     RecyclerView recyclerView;
 
-    ArrayList<SocietiesModel> recycleList;
+    ArrayList<PeopleModel> recycleList;
 
 
 
@@ -35,26 +32,26 @@ public class SocietiesList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_societies_list);
+        setContentView(R.layout.activity_people_list);
 
         recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         recycleList = new ArrayList<>();
 
         firebaseDatabase= FirebaseDatabase.getInstance();
-        SocietiesAdapter recyclerAdapter = new SocietiesAdapter(recycleList,getApplicationContext());
+        PeopleAdapter recyclerAdapter = new PeopleAdapter(recycleList,getApplicationContext());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(),DividerItemDecoration.VERTICAL));
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setAdapter(recyclerAdapter);
 
-        firebaseDatabase.getReference().child("Societies").addListenerForSingleValueEvent(new ValueEventListener() {
+        firebaseDatabase.getReference().child("People").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 for(DataSnapshot dataSnapshot :snapshot.getChildren()){
-                    SocietiesModel societyModel = dataSnapshot.getValue(SocietiesModel.class);
-                    recycleList.add(societyModel);
+                    PeopleModel peopleModel = dataSnapshot.getValue(PeopleModel.class);
+                    recycleList.add(peopleModel);
 
                 }
                 recyclerAdapter.notifyDataSetChanged();

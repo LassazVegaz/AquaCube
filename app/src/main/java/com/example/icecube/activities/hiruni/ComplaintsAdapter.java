@@ -1,6 +1,4 @@
-package com.example.icecube;
-
-import static com.bumptech.glide.load.resource.bitmap.TransformationUtils.circleCrop;
+package com.example.icecube.activities.hiruni;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,14 +10,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.firebase.database.FirebaseDatabase;
+import com.example.icecube.R;
 
 import java.util.ArrayList;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ComplaintsAdapter extends RecyclerView.Adapter<ComplaintsAdapter.ViewHolder>{
 

@@ -1,4 +1,4 @@
-package com.example.icecube;
+package com.example.icecube.activities.hiruni;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-public class SingleComplaint extends AppCompatActivity {
+import com.example.icecube.R;
+
+public class SinglePeople extends AppCompatActivity {
 
 
     TextView singlename, singlearea, singleissue, singledis, singlephone, singledate;
@@ -17,7 +19,7 @@ public class SingleComplaint extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.sathinka);
+        setContentView(R.layout.hiruni);
 
         singlename = findViewById(R.id.singlename);
         singlearea = findViewById(R.id.singlearea);
@@ -38,8 +40,8 @@ public class SingleComplaint extends AppCompatActivity {
     }
 
 
-    public void btnsolve(View view) {
-        Intent intent = new Intent(this, PeopleList.class);
+    public void btnemail(View view) {
+        Intent intent = new Intent(this, EmailActivity.class);
         startActivity(intent);
     }
 }

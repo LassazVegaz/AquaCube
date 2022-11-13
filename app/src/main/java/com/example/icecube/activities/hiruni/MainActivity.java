@@ -1,7 +1,8 @@
-package com.example.icecube;
+package com.example.icecube.activities.hiruni;
 
 import android.os.Bundle;
 
+import com.example.icecube.R;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;

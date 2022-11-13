@@ -1,19 +1,12 @@
-package com.example.icecube;
-
-import static androidx.constraintlayout.motion.utils.Oscillator.TAG;
+package com.example.icecube.activities.hiruni;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.example.icecube.R;
 
 public class Complaints extends AppCompatActivity {
 

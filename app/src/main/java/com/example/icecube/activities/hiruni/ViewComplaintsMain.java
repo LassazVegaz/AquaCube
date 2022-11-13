@@ -1,4 +1,4 @@
-package com.example.icecube;
+package com.example.icecube.activities.hiruni;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 
 
-
+import com.example.icecube.R;
 import com.example.icecube.databinding.ActivityViewComplaintsMainBinding;
 
 import java.util.ArrayList;

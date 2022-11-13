@@ -1,4 +1,4 @@
-package com.example.icecube;
+package com.example.icecube.activities.mithun;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.icecube.R;
 
 public class SingleSociety extends AppCompatActivity {
 

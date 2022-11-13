@@ -1,4 +1,4 @@
-package com.example.icecube;
+package com.example.icecube.activities.mithun;
 
 public class SocietiesModel {
 

@@ -1,11 +1,11 @@
-package com.example.icecube;
+package com.example.icecube.activities.hiruni;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
+import com.example.icecube.R;
 import com.example.icecube.databinding.ActivityViewComplaintsBinding;
 
 public class ViewComplaintsActivity extends AppCompatActivity{
@@ -26,7 +26,7 @@ public class ViewComplaintsActivity extends AppCompatActivity{
             String NameA = intent.getStringExtra("NameA");
             String PhoneNo = intent.getStringExtra("PhoneNo");
             String Dis = intent.getStringExtra("Dis");
-            int ImageId = intent.getIntExtra("ImageId",R.drawable.a);
+            int ImageId = intent.getIntExtra("ImageId", R.drawable.a);
 
             binding.NameProfile.setText(Name);
             binding.NameAProfile.setText(NameA);
