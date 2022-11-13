@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.icecube">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -30,9 +33,79 @@
         <activity android:name=".activities.goals.CreatePlanActivity" />
         <activity android:name=".activities.goals.CreateReminderActivity" />
 
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
+        <activity
+            android:name=".activities.mithun.SingleSociety"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+
+
+        <activity
+            android:name=".activities.hiruni.SinglePeople"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.hiruni.SingleComplaint"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".activities.hiruni.RelavantPartiesActivity"
+            android:exported="false"
+            android:label="Unique Relavant parties"
+            android:parentActivityName=".activities.hiruni.RelavantPartiesMain" />
+        <activity
+            android:name=".activities.hiruni.RelavantPartiesMain"
+            android:exported="false"
+            android:label="Relavant parties"
+            android:parentActivityName=".activities.hiruni.ViewComplaintsActivity" />
+        <activity
+            android:name=".activities.hiruni.ViewComplaintsActivity"
+            android:exported="false"
+            android:label="Solve Complaints"
+            android:parentActivityName=".activities.hiruni.ViewComplaintsMain" />
+        <activity
+            android:name=".activities.hiruni.ViewComplaintsMain"
+            android:exported="false"
+            android:label="View Complaints"
+            android:parentActivityName=".activities.hiruni.Complaints" />
+        <activity
+            android:name=".activities.hiruni.EmailActivity"
+            android:exported="false"
+            android:label="View Complaints"
+            android:parentActivityName=".activities.hiruni.Complaints" />
+        <activity
+            android:name=".activities.hiruni.PeopleList"
+            android:exported="false"
+            android:label="View Complaints"
+            android:parentActivityName=".activities.hiruni.Complaints" />
+
+        <activity
+            android:name=".activities.hiruni.ManageSocieties"
+            android:exported="false"
+            android:label="View Complaints"
+            android:parentActivityName=".activities.hiruni.Complaints" />
+
+        <activity
+            android:name=".activities.hiruni.PopulationMenu"
+            android:exported="true"
+            android:label="Inquries/Complaints"
+            android:parentActivityName=".activities.hiruni.ComplaintsInsert">
+        </activity>
+
+        <activity
+            android:name=".activities.hiruni.MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.IceCube.NoActionBar" />
+
     </application>
 
 </manifest>
