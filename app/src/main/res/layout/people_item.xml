@@ -47,7 +47,7 @@
             android:text="Date"
             android:textColor="@color/IndigoBlue"
             android:textSize="20sp" />
-        
+
         <LinearLayout
             android:layout_below="@id/date1"
             android:layout_width="match_parent"

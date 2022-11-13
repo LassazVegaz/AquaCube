@@ -11,5 +11,10 @@
     <color name="blue">#0029FF</color>
     <color name="underline">#D8D6D6</color>
     <color name="green">#DFE9F5</color>
+    <color name="transparent">#FF001F</color>
+    <color name="IndigoBlue">#281E5D</color>
+    <color name="blue1">#52B2BF</color>
+
+
 
 </resources>

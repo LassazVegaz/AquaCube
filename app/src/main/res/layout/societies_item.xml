@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:background="@color/colorPrimary">
+        android:background="@color/blue">
 
 
         <TextView
@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Area"
-            android:textColor="@color/IndigoBlue"
+            android:textColor="@color/white"
             android:textSize="25sp"
 
             android:textStyle="bold" />
@@ -33,7 +33,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="4dp"
             android:text="Issue"
-            android:textColor="@color/IndigoBlue"
+            android:textColor="@color/white"
             android:textSize="20sp" />
 
         <TextView
@@ -45,9 +45,9 @@
 
             android:layout_marginTop="3dp"
             android:text="Date"
-            android:textColor="@color/IndigoBlue"
+            android:textColor="@color/white"
             android:textSize="20sp" />
-        
+
         <LinearLayout
             android:layout_below="@id/date1"
             android:layout_width="match_parent"

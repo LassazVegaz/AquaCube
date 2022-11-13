@@ -20,11 +20,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ComplaintsList extends AppCompatActivity {
+public class PeopleList extends AppCompatActivity {
 
     RecyclerView recyclerView;
 
-    ArrayList<ComplaintsModel> recycleList;
+    ArrayList<PeopleModel> recycleList;
 
 
 
@@ -35,28 +35,28 @@ public class ComplaintsList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_complaints_list);
+        setContentView(R.layout.activity_people_list);
 
         recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         recycleList = new ArrayList<>();
 
-       firebaseDatabase= FirebaseDatabase.getInstance();
-        ComplaintsAdapter recyclerAdapter = new ComplaintsAdapter(recycleList,getApplicationContext());
+        firebaseDatabase= FirebaseDatabase.getInstance();
+        PeopleAdapter recyclerAdapter = new PeopleAdapter(recycleList,getApplicationContext());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(),DividerItemDecoration.VERTICAL));
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setAdapter(recyclerAdapter);
 
-        firebaseDatabase.getReference().child("Complaints").addListenerForSingleValueEvent(new ValueEventListener() {
+        firebaseDatabase.getReference().child("People").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 for(DataSnapshot dataSnapshot :snapshot.getChildren()){
-                    ComplaintsModel complaintsModel = dataSnapshot.getValue(ComplaintsModel.class);
-                    recycleList.add(complaintsModel);
+                    PeopleModel peopleModel = dataSnapshot.getValue(PeopleModel.class);
+                    recycleList.add(peopleModel);
 
-            }
+                }
                 recyclerAdapter.notifyDataSetChanged();
             }
 

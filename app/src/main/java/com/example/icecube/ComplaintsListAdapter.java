@@ -40,12 +40,12 @@ public class ComplaintsListAdapter extends ArrayAdapter<ViewComplaints> {
 
         TextView Name = convertView.findViewById(R.id.Name);
         TextView City = convertView.findViewById(R.id.City);
-        TextView Time = convertView.findViewById(R.id.Time);
+
 
 
         Name.setText(viewComplaints.Name);
         City.setText(viewComplaints.City);
-        Time.setText(viewComplaints.Time);
+
 
 
         return convertView;

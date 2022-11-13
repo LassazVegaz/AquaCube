@@ -21,14 +21,14 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ComplaintsAdapter extends RecyclerView.Adapter<ComplaintsAdapter.ViewHolder>{
+public class PeopleAdapter extends RecyclerView.Adapter<PeopleAdapter.ViewHolder>{
 
 
-    ArrayList<ComplaintsModel> list;
+    ArrayList<PeopleModel> list;
     Context context;
 
 
-    public ComplaintsAdapter(ArrayList<ComplaintsModel> list, Context context) {
+    public PeopleAdapter(ArrayList<PeopleModel> list, Context context) {
         this.list = list;
         this.context = context;
     }
@@ -40,14 +40,14 @@ public class ComplaintsAdapter extends RecyclerView.Adapter<ComplaintsAdapter.Vi
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.complaints_item,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.people_item,parent,false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        ComplaintsModel model=list.get(position);
+        PeopleModel model=list.get(position);
 
         holder.area1.setText(model.getArea());
         holder.date1.setText(model.getDate());
@@ -62,7 +62,7 @@ public class ComplaintsAdapter extends RecyclerView.Adapter<ComplaintsAdapter.Vi
 
 
 
-                Intent intent = new Intent(context, SingleComplaint.class);
+                Intent intent = new Intent(context, SinglePeople.class);
                 intent.putExtra("singlename",model.getName());
                 intent.putExtra("singlearea",model.getArea());
                 intent.putExtra("singleissue",model.getIssue());

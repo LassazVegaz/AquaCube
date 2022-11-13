@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.icecube">
 
-    
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
-        
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -16,7 +16,29 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IceCube"
         tools:targetApi="31">
+        <activity
+            android:name=".SingleSociety"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
 
+
+        <activity
+            android:name=".SinglePeople"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".SingleComplaint"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".RelavantPartiesActivity"
             android:exported="false"
@@ -38,10 +60,27 @@
             android:label="View Complaints"
             android:parentActivityName=".Complaints" />
         <activity
-            android:name=".Complaints"
+            android:name=".EmailActivity"
+            android:exported="false"
+            android:label="View Complaints"
+            android:parentActivityName=".Complaints" />
+        <activity
+            android:name=".PeopleList"
+            android:exported="false"
+            android:label="View Complaints"
+            android:parentActivityName=".Complaints" />
+
+        <activity
+            android:name=".ManageSocieties"
+            android:exported="false"
+            android:label="View Complaints"
+            android:parentActivityName=".Complaints" />
+
+        <activity
+            android:name=".PopulationMenu"
             android:exported="true"
-            android:label="Inquiries/Complaints"
-            android:parentActivityName=".MainActivity">
+            android:label="Inquries/Complaints"
+            android:parentActivityName=".ComplaintsInsert">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

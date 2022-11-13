@@ -1,13 +1,13 @@
 package com.example.icecube;
 
-public class ComplaintsModel {
+public class SocietiesModel {
 
     String Name,Area,Issue,Dis,Phone,Date;
 
- ComplaintsModel(){
- }
+    SocietiesModel(){
+    }
 
-    public ComplaintsModel(String name, String area,String issue, String dis, String phone, String date) {
+    public SocietiesModel(String name, String area,String issue, String dis, String phone, String date) {
         Name = name;
         Area = area;
         Issue = issue;

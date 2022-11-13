@@ -20,11 +20,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ComplaintsList extends AppCompatActivity {
+public class SocietiesList extends AppCompatActivity {
 
     RecyclerView recyclerView;
 
-    ArrayList<ComplaintsModel> recycleList;
+    ArrayList<SocietiesModel> recycleList;
 
 
 
@@ -35,28 +35,28 @@ public class ComplaintsList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_complaints_list);
+        setContentView(R.layout.activity_societies_list);
 
         recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
         recycleList = new ArrayList<>();
 
-       firebaseDatabase= FirebaseDatabase.getInstance();
-        ComplaintsAdapter recyclerAdapter = new ComplaintsAdapter(recycleList,getApplicationContext());
+        firebaseDatabase= FirebaseDatabase.getInstance();
+        SocietiesAdapter recyclerAdapter = new SocietiesAdapter(recycleList,getApplicationContext());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(),DividerItemDecoration.VERTICAL));
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setAdapter(recyclerAdapter);
 
-        firebaseDatabase.getReference().child("Complaints").addListenerForSingleValueEvent(new ValueEventListener() {
+        firebaseDatabase.getReference().child("Societies").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 for(DataSnapshot dataSnapshot :snapshot.getChildren()){
-                    ComplaintsModel complaintsModel = dataSnapshot.getValue(ComplaintsModel.class);
-                    recycleList.add(complaintsModel);
+                    SocietiesModel societyModel = dataSnapshot.getValue(SocietiesModel.class);
+                    recycleList.add(societyModel);
 
-            }
+                }
                 recyclerAdapter.notifyDataSetChanged();
             }
 
