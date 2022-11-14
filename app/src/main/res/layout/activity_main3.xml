@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightGrayColor"
+    android:backgroundTint="#6CE0EF"
+    android:orientation="vertical"
+    android:padding="8dp"
+    tools:context=".MainActivity3">
+
+    <Button
+        android:id="@+id/btnGo"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="300dp"
+        android:onClick="List" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@color/lightGrayColor">
+
+    </ListView>
+
+    <!--now check how it looks-->
+    <!--friends as you can see custom listview show its divider
+    now let's hide it's divider i have a background color that is gray color-->
+    <!-- this color is very dark-->
+    <!--so friends this looks much better now
+    thank for watching this is special tutorial for beginners-->
+
+</LinearLayout>

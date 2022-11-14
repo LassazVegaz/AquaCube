@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main6"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ABE9F1"
+    android:paddingLeft="1dp"
+    android:paddingTop="16dp"
+    android:paddingRight="1dp"
+
+    android:paddingBottom="1dp"
+    tools:context="com.example.icecube.MainActivity6">
+
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="1dp"
+        android:ems="10"
+        android:hint="Enter Location"
+        android:inputType="textPersonName" />
+
+
+    <Spinner
+        android:id="@+id/spinnerGenres"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextName"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="27dp"
+        android:entries="@array/genres"
+        android:scrollbarSize="5dp" />
+
+    <Button
+        android:id="@+id/buttonAddArtist"
+        android:layout_width="221dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spinnerGenres"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="31dp"
+        android:background="#B34848"
+        android:backgroundTint="#C32D2D"
+        android:text="Add Details"
+        android:textColorLink="#E45C5C" />
+
+
+
+
+    <ListView
+        android:id="@+id/listViewArtists"
+        android:layout_width="252dp"
+        android:layout_height="313dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="126dp"
+        android:background="#50D8EA" />
+
+    <Button
+        android:id="@+id/btno"
+        android:onClick="ListV"
+        android:layout_width="110dp"
+        android:layout_marginLeft="300dp"
+        android:layout_height="wrap_content" />
+
+
+</RelativeLayout>

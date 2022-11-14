@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#885466"
+    android:backgroundTint="#AAEFF8"
+    android:padding="16dp"
+    tools:context=".AnotherActivity">
+
+    <ImageView
+        android:id="@+id/another_imageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/another_imageView"
+        android:gravity="center"
+        android:text="Title Text"
+        android:textColor="@color/blackColor"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/descriptionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleText"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:text="Description Text"
+        android:textSize="26sp"
+        android:textStyle="italic" />
+
+    <!-- i think this looks better for another activity-->
+
+</RelativeLayout>

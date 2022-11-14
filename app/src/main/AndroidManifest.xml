@@ -14,16 +14,100 @@
         android:theme="@style/Theme.IceCube"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".Home"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".CustomListView"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ListView"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".adddetails"
             android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.IceCube.NoActionBar">
+            android:label="Compaign details"
+            android:parentActivityName=".campaignintroduction" />
+        <activity
+            android:name=".MainActivity2"
+            android:exported="true"
+            android:label="Compaign details"
+            android:parentActivityName=".campaignintroduction" />
+        <activity
+            android:name=".MainActivity3"
+            android:exported="true"
+            android:label="Compaign details"
+            android:parentActivityName=".campaignintroduction" />
+        <activity
+            android:name=".MainActivity5"
+            android:exported="true"
+            android:label="Compaign details"
+            android:parentActivityName=".campaignintroduction" />
+        <activity
+            android:name=".MainActivity6"
+            android:exported="true"
+            android:label="Compaign details"
+            android:parentActivityName=".campaignintroduction" />
+        <activity
+            android:name=".AnotherActivity"
+            android:exported="true"
+            android:label="Compaign details"
+            android:parentActivityName=".campaignintroduction" />
+
+        <activity
+            android:name=".register"
+            android:exported="true"
+            android:label="Compaign details"
+            android:parentActivityName=".campaignintroduction" />
+        <activity
+            android:name=".RVActivity"
+            android:exported="true"
+            android:label="Compaign details"
+            android:parentActivityName=".campaignintroduction" />
+        <activity
+            android:name=".CampaignList"
+            android:exported="true"
+            android:label="Compaign details"
+            android:parentActivityName=".campaignintroduction"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".CampaignOrg"
+            android:exported="true"
+            android:label="Compaign details"
+            android:parentActivityName=".campaignintroduction"
+            tools:ignore="Instantiatable" />
+        <activity
+            android:name=".campaigndetail"
+            android:exported="true"
+            android:label="Compaign details"
+            android:parentActivityName=".campaignintroduction" />
+        <activity
+            android:name=".campaignintroduction"
+            android:exported="true"
+            android:label="AquaCube"
+            android:parentActivityName=".CampaignList">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.IceCube.NoActionBar" />
     </application>
 
 </manifest>
