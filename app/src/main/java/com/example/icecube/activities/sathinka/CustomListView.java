@@ -1,14 +1,16 @@
-package com.example.icecube;
+package com.example.icecube.activities.sathinka;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class ListView extends AppCompatActivity {
+import com.example.icecube.R;
+
+public class CustomListView extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_listview);
+        setContentView(R.layout.activity_custom_list_view);
     }
 }

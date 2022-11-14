@@ -1,4 +1,4 @@
-package com.example.icecube;
+package com.example.icecube.activities.sathinka;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.util.Log;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.example.icecube.R;
 
 public class MainActivity2 extends AppCompatActivity {
     String fruitlist[]={"Apple","Banana","Apricot","Orange","Water melon"};

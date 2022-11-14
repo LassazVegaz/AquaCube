@@ -7,7 +7,7 @@
     android:background="#885466"
     android:backgroundTint="#AAEFF8"
     android:padding="16dp"
-    tools:context=".AnotherActivity">
+    tools:context=".activities.sathinka.AnotherActivity">
 
     <ImageView
         android:id="@+id/another_imageView"

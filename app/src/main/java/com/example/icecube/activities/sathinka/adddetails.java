@@ -1,4 +1,4 @@
-package com.example.icecube;
+package com.example.icecube.activities.sathinka;
 
 
 import android.widget.Toast;
@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
 
+import com.example.icecube.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 

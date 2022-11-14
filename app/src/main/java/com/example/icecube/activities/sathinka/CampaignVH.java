@@ -1,10 +1,12 @@
-package com.example.icecube;
+package com.example.icecube.activities.sathinka;
 
 import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.icecube.R;
 
 public class CampaignVH extends RecyclerView.ViewHolder
 {

@@ -1,4 +1,4 @@
-package com.example.icecube;
+package com.example.icecube.activities.sathinka;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,17 +6,18 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class register extends AppCompatActivity {
+import com.example.icecube.R;
+
+public class campaigndetail extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
-        setContentView(R.layout.activity_register);
-
+        setContentView(R.layout.activity_campaigndetail);
     }
-    public void AddRegister(View view) {
-        Intent intent = new Intent(this, MainActivity5.class);
+    public void AddData(View view) {
+        Intent intent = new Intent(this, MainActivity3.class);
         startActivity(intent);
     }
 }

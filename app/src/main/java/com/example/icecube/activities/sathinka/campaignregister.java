@@ -1,10 +1,12 @@
-package com.example.icecube;
+package com.example.icecube.activities.sathinka;
 
 import android.widget.Toast;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
+
+import com.example.icecube.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import java.util.HashMap;
 import com.google.firebase.database.DataSnapshot;

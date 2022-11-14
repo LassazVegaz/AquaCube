@@ -1,4 +1,4 @@
-package com.example.icecube;
+package com.example.icecube.activities.sathinka;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;

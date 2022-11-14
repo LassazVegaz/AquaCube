@@ -7,7 +7,7 @@
     android:background="#BFF3FA"
     android:orientation="vertical"
     android:padding="15dp"
-    tools:context=".MainActivity5">
+    tools:context=".activities.sathinka.MainActivity5">
 
     <ImageView
         android:layout_width="481dp"

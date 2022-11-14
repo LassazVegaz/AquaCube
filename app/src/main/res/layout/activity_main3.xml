@@ -8,7 +8,7 @@
     android:backgroundTint="#6CE0EF"
     android:orientation="vertical"
     android:padding="8dp"
-    tools:context=".MainActivity3">
+    tools:context=".activities.sathinka.MainActivity3">
 
     <Button
         android:id="@+id/btnGo"

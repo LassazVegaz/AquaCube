@@ -10,7 +10,7 @@
     android:paddingRight="1dp"
 
     android:paddingBottom="1dp"
-    tools:context="com.example.icecube.MainActivity6">
+    tools:context="com.example.icecube.activities.sathinka.MainActivity6">
 
 
     <EditText
